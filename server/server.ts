@@ -4,6 +4,14 @@ import express from 'express';
 import pg from 'pg';
 import { ClientError, errorMiddleware } from './lib/index.js';
 
+type Product = {
+  productId: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+  description: string;
+};
+
 const connectionString =
   process.env.DATABASE_URL ||
   `postgresql://${process.env.RDS_USERNAME}:${process.env.RDS_PASSWORD}@${process.env.RDS_HOSTNAME}:${process.env.RDS_PORT}/${process.env.RDS_DB_NAME}`;
@@ -25,8 +33,54 @@ app.use(express.static(reactStaticDir));
 app.use(express.static(uploadsStaticDir));
 app.use(express.json());
 
-app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello, World!' });
+// app.get('/api/hello', (req, res) => {
+//   res.json({ message: 'Hello, World!' });
+// });
+
+app.get('/api/product', async (req, res, next) => {
+  try {
+    const sql = `
+      SELECT "productId",
+            "name",
+            "price",
+            "imageUrl",
+            "description"
+        FROM "product"
+    `;
+    const result = await db.query<Product>(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get('/api/product/:productId', async (req, res, next) => {
+  try {
+    const productId = Number(req.params.productId);
+    if (!productId) {
+      throw new ClientError(400, 'productId must be a positive integer');
+    }
+    const sql = `
+      SELECT "productId",
+            "name",
+            "price",
+            "imageUrl",
+            "description",
+        FROM "product"
+        WHERE "productId" = $1
+    `;
+    const params = [productId];
+    const result = await db.query<Product>(sql, params);
+    if (!result.rows[0]) {
+      throw new ClientError(
+        404,
+        `cannot find product with productId ${productId}`,
+      );
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    next(err);
+  }
 });
 
 /**

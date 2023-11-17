@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { existsSync } from "node:fs";
+import { Request, Response } from 'express';
+import { existsSync } from 'node:fs';
 
 /**
  * Serves React's index.html if no api route matches.
@@ -20,7 +20,7 @@ import { existsSync } from "node:fs";
 export function defaultMiddleware(reactStaticDir: string) {
   function handleDefault(_req: Request, res: Response) {
     if (!existsSync(reactStaticDir)) {
-      res.sendFile(new URL("./no-client.html", import.meta.url).pathname);
+      res.sendFile(new URL('./no-client.html', import.meta.url).pathname);
       return;
     }
     res.sendFile(`${reactStaticDir}/index.html`);

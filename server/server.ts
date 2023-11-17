@@ -2,7 +2,8 @@
 import 'dotenv/config';
 import express from 'express';
 import pg from 'pg';
-import { ClientError, errorMiddleware } from './lib/index.js';
+import { ClientError } from './lib/client-error.js';
+import { errorMiddleware } from './lib/error-middleware.js';
 
 type Product = {
   productId: number;
@@ -37,7 +38,7 @@ app.use(express.json());
 //   res.json({ message: 'Hello, World!' });
 // });
 
-app.get('/api/product', async (req, res, next) => {
+app.get('/api/products', async (req, res, next) => {
   try {
     const sql = `
       SELECT "productId",
@@ -45,7 +46,7 @@ app.get('/api/product', async (req, res, next) => {
             "price",
             "imageUrl",
             "description"
-        FROM "product"
+        FROM "products"
     `;
     const result = await db.query<Product>(sql);
     res.json(result.rows);
@@ -54,7 +55,7 @@ app.get('/api/product', async (req, res, next) => {
   }
 });
 
-app.get('/api/product/:productId', async (req, res, next) => {
+app.get('/api/products/:productId', async (req, res, next) => {
   try {
     const productId = Number(req.params.productId);
     if (!productId) {

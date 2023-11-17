@@ -11,7 +11,7 @@
 --      ('Get a job', false);
 
 
-INSERT INTO "product" ("productId", "name", "description", "price", "onSale", "available", "imageUrl")
+INSERT INTO "products" ("productId", "name", "description", "price", "onSale", "available", "imageUrl")
 VALUES (
     1,
     'CYBER BABE LED EYESHADOW PALETTE',
@@ -27,11 +27,8 @@ VALUES (
     18,
     true,
     true,
-    '/images/charmblush.png',
-    PRIMARY KEY (
-      ("productId")
-    )
-)
+    '/images/charmblush.png'
+);
 
 INSERT INTO "productImages" ("productId", "imageUrl", "video")
   VALUES (
@@ -42,4 +39,4 @@ INSERT INTO "productImages" ("productId", "imageUrl", "video")
     1,
     'image.png',
     null
-  )
+  );

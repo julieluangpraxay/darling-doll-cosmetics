@@ -12,7 +12,7 @@ export type Product = {
  */
 
 export async function fetchCatalog(): Promise<Product[]> {
-  const res = await fetch("/api/product");
+  const res = await fetch("/api/products");
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
@@ -24,7 +24,7 @@ export async function fetchCatalog(): Promise<Product[]> {
  */
 
 export async function fetchProduct(productId: number): Promise<Product> {
-  const res = await fetch(`/api/product/${productId}`);
+  const res = await fetch(`/api/products/${productId}`);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }

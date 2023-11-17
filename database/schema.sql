@@ -1,12 +1,10 @@
 set client_min_messages to warning;
 
--- DANGER: this is NOT how to do it in the real world.
--- `drop schema` INSTANTLY ERASES EVERYTHING.
 drop schema "public" cascade;
 
 create schema "public";
 
-CREATE TABLE "product" (
+CREATE TABLE "products" (
   "productId" serial PRIMARY KEY,
   "categoryId" integer,
   "name" text,
@@ -18,36 +16,34 @@ CREATE TABLE "product" (
 );
 
 CREATE TABLE "productImages" (
+  "productImageId" serial PRIMARY KEY,
   "imageUrl" text,
   "video" text,
-  "productId" integer,
-  PRIMARY KEY ("imageUrl", "productId")
+  "productId" integer
 );
 
 CREATE TABLE "category" (
-  "categoryId" integer PRIMARY KEY,
+  "categoryId" serial PRIMARY KEY,
   "name" text
 );
 
 CREATE TABLE "cart" (
-  "cartId" integer PRIMARY KEY,
+  "cartId" serial PRIMARY KEY,
   "quantity" integer,
   "productId" integer,
   "customerId" integer
 );
 
 CREATE TABLE "customer" (
-  "customerId" integer PRIMARY KEY,
+  "customerId" serial PRIMARY KEY,
   "email" text,
   "firstName" text,
   "lastName" text,
   "password" text
 );
 
-ALTER TABLE "productImages" ADD FOREIGN KEY ("productId") REFERENCES "product" ("productId");
+ALTER TABLE "productImages" ADD FOREIGN KEY ("productId") REFERENCES "products" ("productId");
 
-ALTER TABLE "cart" ADD FOREIGN KEY ("productId") REFERENCES "product" ("productId");
+ALTER TABLE "cart" ADD FOREIGN KEY ("productId") REFERENCES "products" ("productId");
 
-ALTER TABLE "customer" ADD FOREIGN KEY ("customerId") REFERENCES "cart" ("customerId");
-
-ALTER TABLE "productImages" ADD FOREIGN KEY ("imageUrl") REFERENCES "product" ("imageUrl");
+ALTER TABLE "cart" ADD FOREIGN KEY ("customerId") REFERENCES "customer" ("customerId");

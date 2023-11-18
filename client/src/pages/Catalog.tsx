@@ -55,7 +55,6 @@ function ProductCard({ product }: CardProps) {
       to={`/details/${productId}`}
       className="product text-dark card text-decoration-none mb-4 shadow-sm"
     >
-      {/* TODO: Instead of a div, the above should link to `/details/:productId` */}
       <img src={imageUrl} className="image card-img-top" alt={name} />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>

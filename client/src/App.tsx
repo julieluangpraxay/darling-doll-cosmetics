@@ -18,16 +18,19 @@ export default function App() {
 
   return (
     <>
+      <div className="flex items-center justify-center">
+        <img src="/images/logo.png" className="w-1/4 "></img>
+      </div>
       <div className="bg-pink-200">
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<Catalog />}></Route>
           </Route>
         </Routes>
+        <img src="/images/heroimg.png" className="w-auto"></img>
       </div>
 
       <h1>{serverData}</h1>
-      <img src="/images/heroimg.png"></img>
     </>
   );
 }

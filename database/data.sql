@@ -30,13 +30,13 @@ VALUES (
     '/images/charmblush.png'
 );
 
-INSERT INTO "productImages" ("productId", "imageUrl", "video")
-  VALUES (
-    1,
-    'string.png',
-    null
-  ), (
-    1,
-    'image.png',
-    null
-  );
+-- INSERT INTO "productImages" ("productId", "imageUrl", "video")
+--   VALUES (
+--     1,
+--     'string.png',
+--     null
+--   ), (
+--     1,
+--     'image.png',
+--     null
+--   );

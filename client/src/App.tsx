@@ -2,13 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Catalog } from "./pages/Catalog";
 import { useState, useEffect } from "react";
+import { Home } from "./pages/Home";
 
 export default function App() {
   const [serverData, setServerData] = useState("");
 
   useEffect(() => {
     async function readServerData() {
-      const resp = await fetch("/api/product");
+      const resp = await fetch("/api/products");
       const data = await resp.json();
       console.log("Data from server:", data);
       setServerData(data.message);
@@ -18,19 +19,16 @@ export default function App() {
 
   return (
     <>
-      <div className="flex items-center justify-center">
-        <img src="/images/logo.png" className="w-1/4 "></img>
-      </div>
-      <div className="bg-pink-200">
+      <div>
         <Routes>
           <Route path="/" element={<Header />}>
-            <Route index element={<Catalog />}></Route>
+            <Route index element={<Home />}></Route>
+            <Route path="catalog" element={<Catalog />}></Route>
+            {/* <Route path="sale" element={<Sale />}></Route> */}
           </Route>
         </Routes>
-        <img src="/images/heroimg.png" className="w-auto"></img>
       </div>
-
-      <h1>{serverData}</h1>
+      <div>{serverData}</div>
     </>
   );
 }

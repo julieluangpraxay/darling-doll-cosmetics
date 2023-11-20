@@ -1,16 +1,3 @@
--- Use SQL insert statements to add any
--- starting/dummy data to your database tables
-
--- EXAMPLE:
-
---  insert into "todos"
---    ("task", "isCompleted")
---    values
---      ('Learn to code', false),
---      ('Build projects', false),
---      ('Get a job', false);
-
-
 INSERT INTO "products" ("productId", "name", "description", "price", "onSale", "available", "imageUrl")
 VALUES (
     1,
@@ -28,8 +15,7 @@ VALUES (
     true,
     true,
     '/images/charmblush.png'
-),
-(
+), (
     3,
     'DARLING BLUSH',
     'The matte blushes are highly pigmented and buildable. The shade "charm" is the perfect flush of a soft baby pink tone. Easy to apply and a silky formulated blush made not to crumble inside the case as most do with the heart-shaped cases. This product is vegan and cruelty-free! The packaging for this product says that the shade name is "DARLING" but my manufacturer printed them wrong, please disregard the shade name on the box. Ingredients: Talc, Mica, Magnesium Stearate, Dimethicone, Phenoxyethanol, Ethylhexylglycerin May contain: CI 15850, CI 45410, CI 77891, CI 16035, CI 19140',
@@ -37,7 +23,32 @@ VALUES (
     true,
     true,
     '/images/darlingblush.png'
-)
+), (
+    4,
+    'KAWAII KEYCHAIN LIP GLOSS',
+    'Darling Doll''s popular lip gloss formula is non-sticky, moisturizing, and shiny on the lips. The key ingredients are formulated with essential oils like jojoba oil: It absorbs very easily, so you don''t have to worry about it leaving a greasy residue on your lips. All our glosses are handcrafted to perfection. Scented with aromas of strawberry, bubble gum, and cotton candy mixed to get the right amount of all delicious smells. This lip gloss keychain makes it easy to have shiny and hydrated lips on the go. This gloss is a clear gloss perfect for hydrating the lips while adding a put together look with the high shine on your lips. Ingredients: Hydrogenated Polyisobutene (and) Ethylene/Propylene/Styrene Copolymer (and) Butylene/Ethylene/Styrene Copolymer, Octyldodecanol, Simmondsia Chinensis (Jojoba) Seed Oil, Tocopheryl Acetate (Vitamin E Oil), Ricinus Communis (Castor) Seed Oil, Coconut Oil, Flavor/Aroma. May contain Red 30 (73360) May contain Titanium Dioxide.',
+    9,
+    true,
+    true,
+    '/images/imbaby.png'
+), (
+    5,
+    'NOT YOUR DARLING HEART MIRROR',
+    'Not your darling LED mirror perfect for doing your makeup at home or on the go! The battery is included.',
+    14,
+    true,
+    true,
+    '/images/mirror.png'
+),
+ (
+    6,
+    'ADHESIVE EYE LINER',
+    'Not your darling LED mirror perfect for doing your makeup at home or on the go! The battery is included.',
+    9,
+    true,
+    true,
+    '/images/blackeyeliner.png'
+);
 
 -- INSERT INTO "productImages" ("productId", "imageUrl", "video")
 --   VALUES (

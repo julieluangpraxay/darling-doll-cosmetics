@@ -23,9 +23,9 @@ export function Header() {
             <li className="">
               <Link to="/catalog">SHOP ALL</Link>
             </li>
-            <li className="text-red-600">
+            {/* <li className="text-red-600">
               <Link to="/sale">SALE</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>

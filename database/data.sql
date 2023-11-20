@@ -28,7 +28,16 @@ VALUES (
     true,
     true,
     '/images/charmblush.png'
-);
+),
+(
+    3,
+    'DARLING BLUSH',
+    'The matte blushes are highly pigmented and buildable. The shade "charm" is the perfect flush of a soft baby pink tone. Easy to apply and a silky formulated blush made not to crumble inside the case as most do with the heart-shaped cases. This product is vegan and cruelty-free! The packaging for this product says that the shade name is "DARLING" but my manufacturer printed them wrong, please disregard the shade name on the box. Ingredients: Talc, Mica, Magnesium Stearate, Dimethicone, Phenoxyethanol, Ethylhexylglycerin May contain: CI 15850, CI 45410, CI 77891, CI 16035, CI 19140',
+    18,
+    true,
+    true,
+    '/images/darlingblush.png'
+)
 
 -- INSERT INTO "productImages" ("productId", "imageUrl", "video")
 --   VALUES (

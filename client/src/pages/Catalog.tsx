@@ -31,12 +31,12 @@ export function Catalog() {
       </div>
     );
   return (
-    <div className="container">
-      <h1>Catalog</h1>
+    <div className="m-0 items-center justify-center">
+      <h1>PRODUCTS</h1>
       <hr />
       <div className="row">
         {products?.map((product) => (
-          <div key={product.productId} className="col-12 col-md-6 col-lg-4">
+          <div key={product.productId} className="">
             <ProductCard product={product} />
           </div>
         ))}
@@ -48,18 +48,22 @@ export function Catalog() {
 type CardProps = {
   product: Product;
 };
+
 function ProductCard({ product }: CardProps) {
-  const { productId, name, price, imageUrl, description } = product;
+  const { productId, name, price, imageUrl } = product;
   return (
     <Link
       to={`/details/${productId}`}
       className="product text-dark card text-decoration-none mb-4 shadow-sm"
     >
-      <img src={imageUrl} className="image card-img-top" alt={name} />
+      <img
+        src={imageUrl}
+        className="card-img-top flex w-3/12 rounded-3xl"
+        alt={name}
+      />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
         <p className="card-text text-secondary">{price}</p>
-        <p className="description card-text">{description}</p>
       </div>
     </Link>
   );

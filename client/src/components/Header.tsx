@@ -9,7 +9,7 @@ export function Header() {
         <div className="flex items-center justify-center">
           <img
             src="/images/logo.png"
-            className="w-1/4"
+            className="w-1/5 pb-8"
             alt="darling doll cosmetics logo"
           ></img>
         </div>

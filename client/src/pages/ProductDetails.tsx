@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchProduct, type Product } from "../lib/api";
-export function ProductDetails() {
-  // TODO: Retrieve productId from the route
 
+export function ProductDetails() {
+  // Retrieve productId from the route
   const { productId } = useParams();
   const [product, setProduct] = useState<Product>();
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +35,7 @@ export function ProductDetails() {
       </div>
     );
   if (!product) return null;
-  const { name, imageUrl, price, shortDescription, longDescription } = product;
+  const { name, imageUrl, price, description } = product;
   return (
     <div className="container">
       <div className="card shadow-sm">
@@ -53,13 +53,13 @@ export function ProductDetails() {
             </div>
             <div className="col-12 col-sm-6 col-md-7">
               <h2>{name}</h2>
-              <h5 className="text-secondary">{toDollars(price)}</h5>
-              <p>{shortDescription}</p>
+              <h5 className="text-secondary">{price}</h5>
+              <p>{description}</p>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <p className="long-description">{longDescription}</p>
+              <p className="long-description">{}</p>
             </div>
           </div>
         </div>

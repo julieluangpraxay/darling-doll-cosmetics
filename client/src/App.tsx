@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { Catalog } from "./pages/Catalog";
 import { useState, useEffect } from "react";
 import { Home } from "./pages/Home";
+import { ProductDetails } from "./pages/ProductDetails";
 
 export default function App() {
   const [serverData, setServerData] = useState("");
@@ -25,6 +26,10 @@ export default function App() {
             <Route index element={<Home />}></Route>
             <Route path="catalog" element={<Catalog />}></Route>
             {/* <Route path="sale" element={<Sale />}></Route> */}
+            <Route
+              path="details/:productId"
+              element={<ProductDetails />}
+            ></Route>
           </Route>
         </Routes>
       </div>

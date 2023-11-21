@@ -25,7 +25,6 @@ export default function App() {
           <Route path="/" element={<Header />}>
             <Route index element={<Home />}></Route>
             <Route path="catalog" element={<Catalog />}></Route>
-            {/* <Route path="sale" element={<Sale />}></Route> */}
             <Route
               path="details/:productId"
               element={<ProductDetails />}

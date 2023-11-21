@@ -62,22 +62,30 @@ app.get('/api/products/:productId', async (req, res, next) => {
             "name",
             "price",
             "imageUrl",
-            "description",
-        FROM "product"
-        WHERE "productId" = $1
+            "description"
+      FROM "products"
+      WHERE "productId" = $1
     `;
     const params = [productId];
     const result = await db.query<Product>(sql, params);
     if (!result.rows[0]) {
       throw new ClientError(
         404,
-        `cannot find product with productId ${productId}`,
+        `Cannot find product with productId ${productId}`,
       );
     }
     res.json(result.rows[0]);
   } catch (err) {
     next(err);
   }
+});
+
+app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
+
+app.use(errorMiddleware);
+
+app.listen(process.env.PORT, () => {
+  process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
 });
 
 /**
@@ -91,10 +99,3 @@ app.get('/api/products/:productId', async (req, res, next) => {
  * Catching everything that doesn't match a route and serving index.html allows
  * React Router to manage the routing.
  */
-app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
-
-app.use(errorMiddleware);
-
-app.listen(process.env.PORT, () => {
-  process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
-});

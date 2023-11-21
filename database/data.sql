@@ -50,13 +50,13 @@ VALUES (
     '/images/blackeyeliner.png'
 );
 
--- INSERT INTO "productImages" ("productId", "imageUrl", "video")
---   VALUES (
---     1,
---     'string.png',
---     null
---   ), (
---     1,
---     'image.png',
---     null
---   );
+INSERT INTO "productImages" ("productId", "imageUrl", "video")
+  VALUES (
+    1,
+    '/images/model.png',
+    null
+  ), (
+    1,
+    '/images/cyberswatch1.png',
+    null
+  );

@@ -22,7 +22,7 @@ export function Catalog() {
     loadCatalog();
   }, []);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div></div>;
   if (error)
     return (
       <div>
@@ -31,12 +31,10 @@ export function Catalog() {
       </div>
     );
   return (
-    <div className="container">
-      <h1>Catalog</h1>
-      <hr />
-      <div className="row">
+    <div className="flex">
+      <div className="m-auto flex columns-3 flex-wrap justify-center space-x-8">
         {products?.map((product) => (
-          <div key={product.productId} className="col-12 col-md-6 col-lg-4">
+          <div key={product.productId}>
             <ProductCard product={product} />
           </div>
         ))}
@@ -48,19 +46,38 @@ export function Catalog() {
 type CardProps = {
   product: Product;
 };
+
 function ProductCard({ product }: CardProps) {
-  const { productId, name, price, imageUrl, description } = product;
+  const { productId, name, price, imageUrl } = product;
   return (
-    <Link
-      to={`/details/${productId}`}
-      className="product text-dark card text-decoration-none mb-4 shadow-sm"
-    >
-      <img src={imageUrl} className="image card-img-top" alt={name} />
-      <div className="card-body">
-        <h5 className="card-title">{name}</h5>
-        <p className="card-text text-secondary">{price}</p>
-        <p className="description card-text">{description}</p>
-      </div>
-    </Link>
+    <>
+      <Link to={`/details/${productId}`}>
+        <div className="m-auto my-12 w-80 rounded-2xl bg-white p-2 shadow-lg">
+          <img src={imageUrl} className="rounded-3xl" alt={name} />
+
+          <div className="m-3 rounded-lg bg-pink-200 p-4">
+            <p className="text-s font-bold text-white ">{name}</p>
+            <div className="flex items-center justify-between ">
+              <p className="text-white">${price}</p>
+              <button
+                type="button"
+                className="h-6 w-6 rounded-full bg-pink-500 text-base font-medium text-white hover:bg-pink-700 "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  className="mx-auto"
+                  fill="white"
+                  viewBox="0 0 1792 1792"
+                >
+                  <path d="M1600 736v192q0 40-28 68t-68 28h-416v416q0 40-28 68t-68 28h-192q-40 0-68-28t-28-68v-416h-416q-40 0-68-28t-28-68v-192q0-40 28-68t68-28h416v-416q0-40 28-68t68-28h192q40 0 68 28t28 68v416h416q40 0 68 28t28 68z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </>
   );
 }

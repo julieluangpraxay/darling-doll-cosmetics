@@ -31,8 +31,8 @@ export function Catalog() {
       </div>
     );
   return (
-    <div>
-      <div className="m-0 h-full columns-3">
+    <div className="flex">
+      <div className="m-auto flex columns-3 flex-wrap justify-center space-x-8">
         {products?.map((product) => (
           <div key={product.productId}>
             <ProductCard product={product} />
@@ -51,17 +51,8 @@ function ProductCard({ product }: CardProps) {
   const { productId, name, price, imageUrl } = product;
   return (
     <>
-      {/* <div className="m-0 mb-11 mr-5 flex basis-1/4 columns-4 flex-col py-8 text-center lg:mr-16">
-        <Link to={`/details/${productId}`}>
-          <div className="card-container">
-            <img src={imageUrl} className="rounded-3xl" alt={name} />
-            <h5>{name}</h5>
-            <p>${price}</p>
-          </div>
-        </Link>
-      </div> */}
       <Link to={`/details/${productId}`}>
-        <div className="m-auto my-12 w-64 rounded-2xl bg-white p-2 shadow-lg">
+        <div className="m-auto my-12 w-80 rounded-2xl bg-white p-2 shadow-lg">
           <img src={imageUrl} className="rounded-3xl" alt={name} />
 
           <div className="m-3 rounded-lg bg-pink-200 p-4">
@@ -70,12 +61,12 @@ function ProductCard({ product }: CardProps) {
               <p className="text-white">${price}</p>
               <button
                 type="button"
-                className="h-8 w-8 rounded-full bg-pink-500 text-base font-medium text-white hover:bg-pink-700"
+                className="h-6 w-6 rounded-full bg-pink-500 text-base font-medium text-white hover:bg-pink-700 "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="12"
+                  height="12"
                   className="mx-auto"
                   fill="white"
                   viewBox="0 0 1792 1792"

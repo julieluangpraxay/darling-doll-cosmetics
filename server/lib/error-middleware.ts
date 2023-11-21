@@ -5,9 +5,9 @@ import { ClientError } from './client-error.js';
 
 export function errorMiddleware(
   err: unknown,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction,
+  _next: NextFunction,
 ) {
   if (err instanceof ClientError) {
     res.status(err.status).json({ error: err.message });

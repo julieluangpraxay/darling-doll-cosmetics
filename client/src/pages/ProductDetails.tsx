@@ -46,7 +46,7 @@ export function ProductDetails() {
     );
   if (!product) return null;
 
-  const { name, imageUrl, price, description } = product;
+  const { name, imageUrl, price, description, ingredients } = product;
 
   function handleMiniPhotoClick(index) {
     setCurrentImageIndex(index);
@@ -77,7 +77,7 @@ export function ProductDetails() {
       <div className="m-auto w-1/2 justify-center p-4">
         {/* MAIN PICTURE */}
         <img
-          src={images[currentImageIndex]?.imageUrl || imageUrl}
+          src={images?.[currentImageIndex]?.imageUrl || imageUrl}
           alt={name}
           className="w-full rounded-3xl sm:basis-full "
         />
@@ -120,7 +120,7 @@ export function ProductDetails() {
           {/* accordian 1 */}
           <div className="ml-2 text-sm font-black">
             <button className="group flex w-full flex-wrap items-center justify-between border-b-2 border-black px-6 py-5 text-left">
-              <span className="text-sm font-black">Description</span>
+              <span className="text-sm font-black">DESCRIPTION</span>
               <svg
                 width="10"
                 height="6"
@@ -142,7 +142,7 @@ export function ProductDetails() {
           {/* accordian 2 */}
           <div className="ml-2 text-sm font-black">
             <button className="group flex w-full flex-wrap items-center justify-between border-b-2 border-black px-6 py-5 text-left">
-              <span className="text-sm font-black">Ingredients</span>
+              <span className="text-sm font-black">INGREDIENTS</span>
               <svg
                 width="10"
                 height="6"
@@ -157,7 +157,7 @@ export function ProductDetails() {
                 ></path>
               </svg>
               <div className="mt-4 hidden group-hover:block">
-                <p className="text-xs font-bold">{description}</p>
+                <p className="text-xs font-bold">{ingredients}</p>
               </div>
             </button>
           </div>

@@ -9,6 +9,7 @@ CREATE TABLE "products" (
   "categoryId" integer,
   "name" text,
   "description" text,
+  "ingredients" text,
   "price" integer,
   "onSale" boolean,
   "available" boolean,

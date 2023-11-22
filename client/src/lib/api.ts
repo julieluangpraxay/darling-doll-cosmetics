@@ -4,6 +4,7 @@ export type Product = {
   imageUrl: string;
   price: number;
   description: string;
+  ingredients: string;
 };
 
 export type ProductImage = {

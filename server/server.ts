@@ -62,7 +62,8 @@ app.get('/api/products/:productId', async (req, res, next) => {
             "name",
             "price",
             "imageUrl",
-            "description"
+            "description",
+            "ingredients"
       FROM "products"
       WHERE "productId" = $1
     `;

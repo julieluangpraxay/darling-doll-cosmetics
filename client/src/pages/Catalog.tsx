@@ -56,9 +56,9 @@ function ProductCard({ product }: CardProps) {
           <img src={imageUrl} className="rounded-3xl" alt={name} />
 
           <div className="m-3 rounded-lg bg-pink-200 p-4">
-            <p className="text-s font-bold text-white ">{name}</p>
+            <p className="text-s font-bold text-black ">{name}</p>
             <div className="flex items-center justify-between ">
-              <p className="text-white">${price}</p>
+              <p className="text-black">${price}</p>
               <button
                 type="button"
                 className="h-6 w-6 rounded-full bg-pink-500 text-base font-medium text-white hover:bg-pink-700 "

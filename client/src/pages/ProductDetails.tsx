@@ -58,7 +58,7 @@ export function ProductDetails() {
         key={image.imageUrl}
         src={image.imageUrl}
         alt={`Mini ${index}`}
-        className={`w-1/2 max-w-sm rounded-3xl p-4 ${
+        className={`w-1/2 py-4 ${
           index === currentImageIndex ? "border-pink-400" : "border-pink-400"
         }`}
         onClick={() => handleMiniPhotoClick(index)}
@@ -67,21 +67,26 @@ export function ProductDetails() {
   }
 
   return (
-    <div className="flex">
-      <div className="w-1/4 ">
-        {/* MINI SIDE PHOTOS */}
-        <div className="flex flex-col flex-wrap justify-center">
-          {renderMiniPhotos()}
+    <div className="container flex flex-row">
+      <div className="container p-4">
+        <div className="flex">
+          <div className="basis-1/4">
+            {/* MINI SIDE PHOTOS */}
+            <div className="w-full">{renderMiniPhotos()}</div>
+          </div>
+          {/* MAIN PICTURE */}
+          <div className="basis-3/4">
+            <img
+              src={images?.[currentImageIndex]?.imageUrl || imageUrl}
+              alt={name}
+              className="columns-lg rounded-3xl p-4"
+            />
+          </div>
         </div>
       </div>
-      <div className="m-auto w-1/2 justify-center p-4">
-        {/* MAIN PICTURE */}
-        <img
-          src={images?.[currentImageIndex]?.imageUrl || imageUrl}
-          alt={name}
-          className="w-full rounded-3xl sm:basis-full "
-        />
-        <div className="basis-2/4 p-4">
+
+      <div className="w-1/2 justify-center p-4">
+        <div className="basis-1/2 p-4">
           <h2 className="mb-1 text-4xl font-black">{name}</h2>
           <h5 className="mb-4 block text-2xl font-black text-green-500">
             ${price}

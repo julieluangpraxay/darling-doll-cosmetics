@@ -6,6 +6,12 @@ export type Product = {
   description: string;
 };
 
+export type ProductImage = {
+  imageUrl: string;
+  video: string;
+  productId: number;
+};
+
 /**
  * Fetches all products from the API.
  * @returns Promise that resolves to an array of products.
@@ -25,6 +31,13 @@ export async function fetchCatalog(): Promise<Product[]> {
 
 export async function fetchProduct(productId: number): Promise<Product> {
   const res = await fetch(`/api/products/${productId}`);
+  console.log(`productId: ${productId}`);
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}
+
+export async function fetchImages(productId: number): Promise<ProductImage[]> {
+  const res = await fetch(`/api/productImages/${productId}`);
   console.log(`productId: ${productId}`);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();

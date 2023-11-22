@@ -53,10 +53,20 @@ VALUES (
 INSERT INTO "productImages" ("productId", "imageUrl", "video")
   VALUES (
     1,
+    '/images/cyberbabepalette.png',
+    null
+  ),
+  (
+    1,
     '/images/model.png',
     null
   ), (
     1,
     '/images/cyberswatch1.png',
+    null
+  ),
+  (
+    1,
+    '/images/cyberswatch2.png',
     null
   );

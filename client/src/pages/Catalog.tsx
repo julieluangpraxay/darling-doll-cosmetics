@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchCatalog, type Product } from "../lib/api";
 
-export function Catalog() {
+export function Catalog({ searchText }) {
   const [products, setProducts] = useState<Product[]>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
@@ -22,7 +22,7 @@ export function Catalog() {
     loadCatalog();
   }, []);
 
-  if (isLoading) return <div></div>;
+  if (isLoading || !products) return <div></div>;
   if (error)
     return (
       <div>
@@ -30,10 +30,15 @@ export function Catalog() {
         {error instanceof Error ? error.message : "Unknown Error"}
       </div>
     );
+
+  const searchedProducts = products.filter((product) =>
+    product.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()),
+  );
+
   return (
     <div className="flex">
       <div className="m-auto flex columns-3 flex-wrap justify-center space-x-8">
-        {products?.map((product) => (
+        {searchedProducts?.map((product) => (
           <div key={product.productId}>
             <ProductCard product={product} />
           </div>

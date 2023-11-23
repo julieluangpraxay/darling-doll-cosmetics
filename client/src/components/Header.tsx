@@ -1,10 +1,15 @@
 import { Link, Outlet } from "react-router-dom";
 
-export function Header() {
+export function Header({ onSearch }) {
   return (
     <div>
-      <div>
-        <input type="search" />
+      <div className="">
+        <input
+          type="search"
+          onChange={(e) => onSearch(e.currentTarget.value)}
+          placeholder="search"
+          className="rounded border-2 border-solid border-black"
+        />
         <Link to="/">
           <div className="flex items-center justify-center">
             <img
@@ -27,6 +32,7 @@ export function Header() {
           </ul>
         </div>
       </nav>
+
       <Outlet />
     </div>
   );

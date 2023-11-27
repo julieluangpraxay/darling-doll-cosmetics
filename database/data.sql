@@ -75,4 +75,9 @@ INSERT INTO "productImages" ("productId", "imageUrl", "video")
     1,
     '/images/cyberswatch2.png',
     null
+  ),
+  (
+    2,
+    '/images/blushswatch.png',
+    null
   );

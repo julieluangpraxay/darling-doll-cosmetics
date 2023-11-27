@@ -8,6 +8,7 @@ import { ProductDetails } from "./pages/ProductDetails";
 export default function App() {
   const [serverData, setServerData] = useState("");
   const [searchText, setSearchText] = useState("");
+
   useEffect(() => {
     async function readServerData() {
       const resp = await fetch("/api/products");
@@ -24,7 +25,12 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={<Header onSearch={(text) => setSearchText(text)} />}
+            element={
+              <Header
+                onSearch={(text) => setSearchText(text)}
+                searchText={searchText}
+              />
+            }
           >
             <Route index element={<Home />}></Route>
             <Route

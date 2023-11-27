@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
-export function Header({ onSearch }) {
+export function Header({ onSearch, searchText }) {
   return (
     <div>
       <div className="">
@@ -17,30 +18,22 @@ export function Header({ onSearch }) {
       <nav className=" bg-pink-200 p-5">
         <div className="flex basis-1/2 justify-between">
           <ul className="flex gap-10">
-            <li className="">
+            <li>
               <Link to="/">HOME</Link>
             </li>
-            <li className="">
+            <li>
               <Link to="/catalog">SHOP ALL</Link>
             </li>
           </ul>
-          <div className=" justify-end">
+          <div className="justify-end">
             <ul>
               <li>
-                <Link to="/catalog">
-                  <input
-                    type="search"
-                    onChange={(e) => onSearch(e.currentTarget.value)}
-                    placeholder="search"
-                    className="rounded border-2 border-solid border-black"
-                  />
-                </Link>
+                <SearchBar onSearch={onSearch} searchText={searchText} />
               </li>
             </ul>
           </div>
         </div>
       </nav>
-
       <Outlet />
     </div>
   );

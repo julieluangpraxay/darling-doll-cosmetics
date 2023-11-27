@@ -36,7 +36,7 @@ export function Catalog({ searchText }) {
   );
 
   return (
-    <div className="flex">
+    <div className="flex ">
       <div className="m-auto flex columns-3 flex-wrap justify-center space-x-8 p-8">
         {searchedProducts?.length > 0 ? (
           searchedProducts?.map((product) => (

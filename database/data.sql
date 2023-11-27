@@ -48,12 +48,23 @@ VALUES (
  (
     6,
     'ADHESIVE EYE LINER',
-    'Not your darling LED mirror perfect for doing your makeup at home or on the go! The battery is included.',
+    'This eyeliner is an adhesive perfect for a quick eyelash application. Simply line your upper lash line with the pen. The eyeliner is fast drying and waterproof. Make sure to have proper makeup remover when removing this product. The adhesive is very strong. Apply it on top of eyeshadow if you have oily skin to make lashes stick on longer.',
+    'water, butylene glycol, peg-40 hydrogenated castor oil, phenoxyethanol, cl 77266, styrene/acrylates copolymer',
     null,
     9,
     true,
     true,
     '/images/blackeyeliner.png'
+),
+(
+    7,
+    'ENCHANTED FAIRY EYESHADOW PALETTE',
+    'Inspired by the enchanted mythical fairy tales. A neutral palette perfect for everyday wears along with beautiful one-of-a-kind artwork.',
+    null,
+    28,
+    true,
+    true,
+    '/images/enchantedfairy.png'
 );
 
 INSERT INTO "productImages" ("productId", "imageUrl", "video")
@@ -78,6 +89,41 @@ INSERT INTO "productImages" ("productId", "imageUrl", "video")
   ),
   (
     2,
+    '/images/charmblush.png',
+    null
+  ),
+  (
+    2,
     '/images/blushswatch.png',
+    null
+  ),
+    (
+    2,
+    '/images/details.png',
+    null
+  ),
+    (
+    3,
+    '/images/darlingblush.png',
+    null
+  ),
+  (
+    3,
+    '/images/blushswatch.png',
+    null
+  ),
+    (
+    3,
+    '/images/details.png',
+    null
+  ),
+    (
+    7,
+    '/images/enchantedfairy.png',
+    null
+  ),
+  (
+    7,
+    '/images/fairyeyeshadow.png',
     null
   );

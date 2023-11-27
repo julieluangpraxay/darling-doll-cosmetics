@@ -62,7 +62,11 @@ function ProductCard({ product }: CardProps) {
     <>
       <Link to={`/details/${productId}`}>
         <div className="m-auto my-12 w-80 rounded-2xl bg-white p-2 shadow-lg">
-          <img src={imageUrl} className="rounded-3xl" alt={name} />
+          <img
+            src={imageUrl}
+            className="aspect-square rounded-3xl"
+            alt={name}
+          />
 
           <div className="m-3 rounded-lg bg-pink-200 p-4">
             <p className="text-s font-bold text-black ">{name}</p>

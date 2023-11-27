@@ -37,12 +37,16 @@ export function Catalog({ searchText }) {
 
   return (
     <div className="flex">
-      <div className="m-auto flex columns-3 flex-wrap justify-center space-x-8">
-        {searchedProducts?.map((product) => (
-          <div key={product.productId}>
-            <ProductCard product={product} />
-          </div>
-        ))}
+      <div className="m-auto flex columns-3 flex-wrap justify-center space-x-8 p-8">
+        {searchedProducts?.length > 0 ? (
+          searchedProducts?.map((product) => (
+            <div key={product.productId}>
+              <ProductCard product={product} />
+            </div>
+          ))
+        ) : (
+          <div>No results found for "{searchText}"</div>
+        )}
       </div>
     </div>
   );

@@ -14,8 +14,8 @@ export function Header({ onSearch }) {
           </div>
         </Link>
       </div>
-      <nav className="bg-pink-200 p-5">
-        <div className="">
+      <nav className=" bg-pink-200 p-5">
+        <div className="flex basis-1/2 justify-between">
           <ul className="flex gap-10">
             <li className="">
               <Link to="/">HOME</Link>
@@ -23,17 +23,21 @@ export function Header({ onSearch }) {
             <li className="">
               <Link to="/catalog">SHOP ALL</Link>
             </li>
-            <li>
-              <Link to="/catalog">
-                <input
-                  type="search"
-                  onChange={(e) => onSearch(e.currentTarget.value)}
-                  placeholder="search"
-                  className="rounded border-2 border-solid border-black"
-                />
-              </Link>
-            </li>
           </ul>
+          <div className=" justify-end">
+            <ul>
+              <li>
+                <Link to="/catalog">
+                  <input
+                    type="search"
+                    onChange={(e) => onSearch(e.currentTarget.value)}
+                    placeholder="search"
+                    className="rounded border-2 border-solid border-black"
+                  />
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
 

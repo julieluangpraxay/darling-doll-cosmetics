@@ -4,12 +4,6 @@ export function Header({ onSearch }) {
   return (
     <div>
       <div className="">
-        <input
-          type="search"
-          onChange={(e) => onSearch(e.currentTarget.value)}
-          placeholder="search"
-          className="rounded border-2 border-solid border-black"
-        />
         <Link to="/">
           <div className="flex items-center justify-center">
             <img
@@ -28,6 +22,16 @@ export function Header({ onSearch }) {
             </li>
             <li className="">
               <Link to="/catalog">SHOP ALL</Link>
+            </li>
+            <li>
+              <Link to="/catalog">
+                <input
+                  type="search"
+                  onChange={(e) => onSearch(e.currentTarget.value)}
+                  placeholder="search"
+                  className="rounded border-2 border-solid border-black"
+                />
+              </Link>
             </li>
           </ul>
         </div>

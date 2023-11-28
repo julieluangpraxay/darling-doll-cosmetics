@@ -5,6 +5,7 @@ import {
   fetchProduct,
   ProductImage,
   type Product,
+  addToCart,
 } from "../lib/api";
 
 export function ProductDetails() {
@@ -66,6 +67,15 @@ export function ProductDetails() {
     ));
   }
 
+  async function handleAddToCart() {
+    if (!productId) return;
+    try {
+      await addToCart(+productId);
+    } catch (err) {
+      setError(err);
+    }
+  }
+
   return (
     <div className="container flex flex-row">
       <div className="container p-4">
@@ -97,7 +107,10 @@ export function ProductDetails() {
           >
             <div className="absolute left-0 top-0 h-full w-full -translate-x-1 -translate-y-1 transform transition duration-300 group-hover:translate-x-0 group-hover:translate-y-0">
               <div className="flex h-full w-full items-center justify-center rounded-md border-2 border-black bg-pink-400">
-                <span className="text-base font-black text-black">
+                <span
+                  className="text-base font-black text-black"
+                  onClick={handleAddToCart}
+                >
                   ADD TO CART
                 </span>
               </div>

@@ -11,7 +11,7 @@ export function Header({ onSearch, searchText }) {
         <div className="basis-1/2"></div>
         <img
           src="/images/logo.png"
-          className="w-1/5 pb-8"
+          className="w-64 pb-4 pt-4"
           alt="darling doll cosmetics logo"
         />
 
@@ -19,7 +19,6 @@ export function Header({ onSearch, searchText }) {
           <Link to="/cart">
             <FontAwesomeIcon icon={faCartShopping} size="2xl" />
           </Link>
-
           <FontAwesomeIcon icon={faStar} size="2xl" />
         </div>
       </div>

@@ -103,17 +103,13 @@ app.get('/api/productImages/:productId', async (req, res, next) => {
 app.post('/api/cart', async (req, res, next) => {
   try {
     const sql = `
-    INSERT INTO "cart" ("cartId", "quantity", "productId", "customerId")
-    VALUES  ($1, $2, $3)
+    INSERT INTO "cart" ("quantity", "productId")
+    VALUES  ($1, $2)
+    RETURNING *;
     `;
-    const params = [
-      req.body.cartId,
-      req.body.quantity,
-      req.body.productId,
-      req.body.customerId,
-    ];
+    const params = [req.body.quantity, req.body.productId];
     const result = await db.query(sql, params);
-    const cart = result.rows;
+    const cart = result.rows[0];
 
     res.json(cart);
   } catch (err) {
@@ -126,10 +122,10 @@ app.get('/api/cart', async (req, res, next) => {
     const sql = `
     SELECT
     "productId",
-    "customerId",
     "quantity",
     "name",
-    "imageUrl"
+    "imageUrl",
+    "price"
     FROM "cart"
     JOIN "products" using ("productId")
     `;

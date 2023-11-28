@@ -4,6 +4,7 @@ import { Catalog } from "./pages/Catalog";
 import { useState, useEffect } from "react";
 import { Home } from "./pages/Home";
 import { ProductDetails } from "./pages/ProductDetails";
+import { Cart } from "./pages/Cart";
 
 export default function App() {
   const [serverData, setServerData] = useState("");
@@ -41,6 +42,7 @@ export default function App() {
               path="details/:productId"
               element={<ProductDetails />}
             ></Route>
+            <Route path="cart" element={<Cart />}></Route>
           </Route>
         </Routes>
       </div>

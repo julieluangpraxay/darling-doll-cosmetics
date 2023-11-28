@@ -38,21 +38,23 @@ export function SearchResults({ searchText, setSearchText }) {
     : products;
 
   return (
-    <div className="flex">
-      <div className=" m-auto flex columns-3 flex-wrap justify-center ">
-        {searchedProducts?.length > 0 ? (
-          searchedProducts?.map((product) => (
-            <div
-              key={product.productId}
-              onClick={() => setSearchText("")}
-              className="z-50 w-1/4 p-4"
-            >
-              <ProductResults product={product} />
-            </div>
-          ))
-        ) : (
-          <div>No results found for "{searchText}"</div>
-        )}
+    <div className="bg-black">
+      <div className="bg-white">
+        <div className=" m-auto flex columns-3 flex-wrap justify-center ">
+          {searchedProducts?.length > 0 ? (
+            searchedProducts?.map((product) => (
+              <div
+                key={product.productId}
+                onClick={() => setSearchText("")}
+                className="z-50 w-1/4 p-4"
+              >
+                <ProductResults product={product} />
+              </div>
+            ))
+          ) : (
+            <div>No results found for "{searchText}"</div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -66,22 +68,22 @@ export function ProductResults({ product }: CardProps) {
   const { productId, name, price, imageUrl } = product;
 
   return (
-    <>
+    <div className="">
       <Link to={`/details/${productId}`}>
         <ul>
           <li>
-            <div className="">
-              <img src={imageUrl} className="" alt={name} />
-              <div className="">
-                <p className="">{name}</p>
-                <div className="">
-                  <p className="">${price}</p>
+            <div>
+              <img src={imageUrl} alt={name} />
+              <div>
+                <p>{name}</p>
+                <div>
+                  <p>${price}</p>
                 </div>
               </div>
             </div>
           </li>
         </ul>
       </Link>
-    </>
+    </div>
   );
 }

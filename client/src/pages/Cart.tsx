@@ -39,13 +39,13 @@ export default function Cart() {
         {cartItems.map((n) => (
           <CartCard cartItems={n} key={n.productId} />
         ))}
-        <div className="flex flex-wrap items-center justify-between gap-2 py-4 ">
+        <div className="flex flex-wrap items-center justify-between gap-2 px-10  py-4 ">
           <p className="text-rhino-700 text-lg font-semibold">Subtotal</p>
           <p className="text-rhino-800 text-lg font-semibold">$ 357.00</p>
         </div>
-        <div className="flex flex-wrap justify-end gap-4">
+        <div className="flex flex-wrap justify-end gap-4 p-8">
           <a
-            className="rounded-sm bg-purple-500 px-4 py-3 text-center text-white transition duration-200 hover:bg-purple-600"
+            className="rounded-xl bg-pink-500 px-4 py-3 text-center text-white transition duration-200 hover:bg-purple-600"
             href="#"
           >
             Go to Checkout
@@ -66,14 +66,14 @@ function CartCard({ cartItems }: CartProps) {
   return (
     <>
       <section className="bg-pink-50">
-        <div className="container mx-auto rounded-3xl px-4 ">
+        <div className="container mx-auto rounded-3xl">
           <div className="overflow-x-auto">
-            <div className="flex w-full">
+            <div className="flex">
               <div className="w-full">
-                <div className="flex items-center px-6 ">
+                <div className="flex items-center px-6">
                   <div className="flex items-center gap-4">
                     <div className="flex items-center justify-center rounded-lg bg-gray-100 lg:w-24">
-                      <img src={imageUrl} alt="" className="max-w-full" />
+                      <img src={imageUrl} alt="" className="w-24" />
                     </div>
                     <div>
                       <h2 className="text-rhino-800">{name}</h2>

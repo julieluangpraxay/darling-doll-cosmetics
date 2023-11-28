@@ -1,3 +1,9 @@
 export function Cart() {
-  return <div>This is the cart!!!!!!!!</div>;
+  // const [cartItems, setCartItems] = useState([]);
+
+  return (
+    <div>
+      <h1>Shopping Bag</h1>
+    </div>
+  );
 }

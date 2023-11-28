@@ -100,6 +100,46 @@ app.get('/api/productImages/:productId', async (req, res, next) => {
   }
 });
 
+app.post('/api/cart', async (req, res, next) => {
+  try {
+    const sql = `
+    INSERT INTO "cart" ("cartId", "quantity", "productId", "customerId")
+    VALUES  ($1, $2, $3)
+    `;
+    const params = [
+      req.body.cartId,
+      req.body.quantity,
+      req.body.productId,
+      req.body.customerId,
+    ];
+    const result = await db.query(sql, params);
+    const cart = result.rows;
+
+    res.json(cart);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get('/api/cart', async (req, res, next) => {
+  try {
+    const sql = `
+    SELECT
+    "productId",
+    "customerId",
+    "quantity",
+    "name",
+    "imageUrl"
+    FROM "cart"
+    JOIN "products" using ("productId")
+    `;
+    const result = await db.query<Product>(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 
 app.use(errorMiddleware);

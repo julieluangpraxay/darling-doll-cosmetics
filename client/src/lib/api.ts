@@ -24,12 +24,6 @@ export async function fetchCatalog(): Promise<Product[]> {
   return await res.json();
 }
 
-export async function fetchSearchCatalog(): Promise<Product[]> {
-  const res = await fetch("/api/products");
-  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
-  return await res.json();
-}
-
 /**
  * Fetches a single product from the API.
  * @param {number} productId The ID of the product to fetch.
@@ -47,5 +41,22 @@ export async function fetchImages(productId: number): Promise<ProductImage[]> {
   const res = await fetch(`/api/productImages/${productId}`);
   console.log(`productId: ${productId}`);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}
+
+export async function addToCart(productId: number) {
+  const requestBody = JSON.stringify({ productId, quantity: 1 });
+
+  const res = await fetch("/api/cart", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: requestBody,
+  });
+
+  if (!res.ok) {
+    throw new Error(`fetch Error ${res.status}`);
+  }
   return await res.json();
 }

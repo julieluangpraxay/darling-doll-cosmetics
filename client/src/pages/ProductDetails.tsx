@@ -59,9 +59,7 @@ export function ProductDetails() {
         key={image.imageUrl}
         src={image.imageUrl}
         alt={`Mini ${index}`}
-        className={`w-1/2 py-4 ${
-          index === currentImageIndex ? "border-pink-400" : "border-pink-400"
-        }`}
+        className={"w-1/2 py-4"}
         onClick={() => handleMiniPhotoClick(index)}
       />
     ));

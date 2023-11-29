@@ -92,3 +92,20 @@ export async function addQuantity(cartId: number, quantity: number) {
   }
   return await res.json();
 }
+
+export async function removeQuantity(cartId: number, quantity: number) {
+  const requestBody = JSON.stringify({ quantity });
+
+  const res = await fetch(`/api/cart/${cartId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: requestBody,
+  });
+
+  if (!res.ok) {
+    throw new Error(`fetch Error ${res.status}`);
+  }
+  return await res.json();
+}

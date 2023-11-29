@@ -132,6 +132,6 @@ INSERT INTO "productImages" ("productId", "imageUrl", "video")
   ),
     (
     5,
-    '/images/mirror1.png',
+    '/images/mirror1.jpg',
     null
   );

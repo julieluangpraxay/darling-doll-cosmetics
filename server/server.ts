@@ -100,28 +100,6 @@ app.get('/api/productImages/:productId', async (req, res, next) => {
   }
 });
 
-// app.post('/api/cart', async (req, res, next) => {
-//   try {
-//     const sql = `
-//     SELECT from "cart"
-//     IF ("productId")
-//     BEGIN
-//     "quantity" + "quantity" + 1
-//     ELSE
-//     INSERT INTO "cart" ("quantity", "productId")
-//     VALUES  ($1, $2)
-//     RETURNING *;
-//     `;
-//     const params = [req.body.quantity, req.body.productId];
-//     const result = await db.query(sql, params);
-//     const cart = result.rows[0];
-
-//     res.json(cart);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
 app.post('/api/cart', async (req, res, next) => {
   try {
     const productId = req.body.productId;

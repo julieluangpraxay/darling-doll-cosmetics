@@ -6,6 +6,14 @@ export default function Cart() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      const newTotalPrice = calculateTotalPrice(cartItems);
+      setTotalPrice(newTotalPrice);
+    }
+  }, [cartItems]);
 
   useEffect(() => {
     async function loadCatalog() {
@@ -68,6 +76,12 @@ export default function Cart() {
     }
   }
 
+  function calculateTotalPrice(items) {
+    return items.reduce((total, item) => {
+      return total + item.price * item.quantity;
+    }, 0);
+  }
+
   return (
     <>
       <div>
@@ -85,7 +99,9 @@ export default function Cart() {
           ))}
           <div className="flex flex-wrap items-center justify-between gap-2 px-10  py-4 ">
             <p className="text-rhino-700 text-lg font-semibold">SUBTOTAL</p>
-            <p className="text-rhino-800 text-lg font-semibold">$ 1000.00</p>
+            <p className="text-rhino-800 text-lg font-semibold">
+              ${totalPrice.toFixed(2)}
+            </p>
           </div>
           <div className="flex flex-wrap justify-end gap-4 p-8">
             <a

@@ -5,6 +5,7 @@ export default function Cart() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     async function loadCatalog() {
@@ -30,26 +31,37 @@ export default function Cart() {
       </div>
     );
 
+  function handleAddQuantity() {
+    setQuantity((prev) => prev + 1);
+    console.log("quantity add:", quantity);
+  }
+
   return (
     <>
-      <h1 className="font-heading text-coolGray-800 mb-10 mt-10 text-center text-3xl font-semibold">
-        SHOPPING CART
-      </h1>
-      <div className="mx-10 mb-6 rounded-3xl bg-pink-50 p-6 shadow-md">
-        {cartItems.map((n) => (
-          <CartCard cartItems={n} key={n.productId} />
-        ))}
-        <div className="flex flex-wrap items-center justify-between gap-2 px-10  py-4 ">
-          <p className="text-rhino-700 text-lg font-semibold">Subtotal</p>
-          <p className="text-rhino-800 text-lg font-semibold">$ 357.00</p>
-        </div>
-        <div className="flex flex-wrap justify-end gap-4 p-8">
-          <a
-            className="rounded-xl bg-pink-500 px-4 py-3 text-center text-white transition duration-200 hover:bg-purple-600"
-            href="#"
-          >
-            Go to Checkout
-          </a>
+      <div>
+        <h1 className="font-heading text-coolGray-800 mb-10 mt-10 text-center text-3xl font-semibold">
+          SHOPPING CART
+        </h1>
+        <div className="mx-10 mb-6 rounded-3xl bg-pink-50 p-6 shadow-md">
+          {cartItems.map((n) => (
+            <CartCard
+              cartItems={n}
+              key={n.productId}
+              onClick={() => handleAddQuantity()}
+            />
+          ))}
+          <div className="flex flex-wrap items-center justify-between gap-2 px-10  py-4 ">
+            <p className="text-rhino-700 text-lg font-semibold">SUBTOTAL</p>
+            <p className="text-rhino-800 text-lg font-semibold">$ 1000.00</p>
+          </div>
+          <div className="flex flex-wrap justify-end gap-4 p-8">
+            <a
+              className="rounded-xl bg-pink-500 px-4 py-3 text-center text-white transition duration-200 hover:bg-purple-600"
+              href="#"
+            >
+              CHECKOUT
+            </a>
+          </div>
         </div>
       </div>
     </>
@@ -58,9 +70,10 @@ export default function Cart() {
 
 type CartProps = {
   cartItems: CartItem;
+  onClick: () => void;
 };
 
-function CartCard({ cartItems }: CartProps) {
+function CartCard({ cartItems, onClick }: CartProps) {
   const { name, price, imageUrl, quantity } = cartItems;
 
   return (
@@ -102,7 +115,10 @@ function CartCard({ cartItems }: CartProps) {
                       </svg>
                     </div>
                     <span className="text-rhino-800 text-sm">{quantity}</span>
-                    <div className="text-coolGray-300 hover:text-coolGray-400 cursor-pointer transition duration-200">
+                    <div
+                      className="text-coolGray-300 hover:text-coolGray-400 cursor-pointer transition duration-200"
+                      onClick={onClick}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width={16}

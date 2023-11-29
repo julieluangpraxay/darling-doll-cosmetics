@@ -136,6 +136,47 @@ app.get('/api/cart', async (req, res, next) => {
   }
 });
 
+app.delete('/api/cart/:cartId', async (req, res, next) => {
+  try {
+    const cartId = req.params.cartId;
+
+    const sql = `
+    DELETE
+    FROM "cart"
+    WHERE "cartId" = $1
+    RETURNING *;
+    `;
+    const params = [cartId];
+    const result = await db.query(sql, params);
+    const cart = result.rows[0];
+
+    if (!cart) {
+      throw new ClientError(404, `Cannot find cart with "cartId" ${cartId}`);
+    }
+    res.json(cart);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.put('api/cart/:cartId', async (req, res, next) => {
+  try {
+    const sql = `
+    UPDATE "cart"
+    SET "quantity" = "quantity" + 1
+    WHERE "cartId" = $2
+    `;
+
+    const params = [req.body.quantity, req.body.cart];
+    const result = await db.query(sql, params);
+    const cart = result.rows[0];
+
+    res.json(cart);
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 
 app.use(errorMiddleware);

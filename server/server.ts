@@ -125,7 +125,8 @@ app.get('/api/cart', async (req, res, next) => {
     "quantity",
     "name",
     "imageUrl",
-    "price"
+    "price",
+    "cartId"
     FROM "cart"
     JOIN "products" using ("productId")
     `;
@@ -159,15 +160,17 @@ app.delete('/api/cart/:cartId', async (req, res, next) => {
   }
 });
 
-app.put('api/cart/:cartId', async (req, res, next) => {
+app.put('/api/cart/:cartId', async (req, res, next) => {
   try {
+    const cartId = req.params.cartId;
     const sql = `
     UPDATE "cart"
-    SET "quantity" = "quantity" + 1
+    SET "quantity" = $1
     WHERE "cartId" = $2
+    RETURNING *;
     `;
 
-    const params = [req.body.quantity, req.body.cart];
+    const params = [req.body.quantity, cartId];
     const result = await db.query(sql, params);
     const cart = result.rows[0];
 

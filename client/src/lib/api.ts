@@ -19,6 +19,7 @@ export type CartItem = {
   imageUrl: string;
   price: number;
   quantity: number;
+  cartId: number;
 };
 
 /**
@@ -63,6 +64,23 @@ export async function addToCart(productId: number) {
 
   const res = await fetch("/api/cart", {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: requestBody,
+  });
+
+  if (!res.ok) {
+    throw new Error(`fetch Error ${res.status}`);
+  }
+  return await res.json();
+}
+
+export async function addQuantity(cartId: number, quantity: number) {
+  const requestBody = JSON.stringify({ quantity });
+
+  const res = await fetch(`/api/cart/${cartId}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },

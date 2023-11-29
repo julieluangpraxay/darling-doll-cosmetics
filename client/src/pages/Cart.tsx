@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { CartItem, fetchCart } from "../lib/api";
+import { CartItem, addQuantity, fetchCart } from "../lib/api";
 
 export default function Cart() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     async function loadCatalog() {
@@ -31,9 +30,16 @@ export default function Cart() {
       </div>
     );
 
-  function handleAddQuantity() {
-    setQuantity((prev) => prev + 1);
-    console.log("quantity add:", quantity);
+  async function handleAddQuantity(item: CartItem) {
+    await addQuantity(item.cartId, item.quantity + 1);
+    const newProducts = cartItems.map((product) => {
+      if (product.cartId === item.cartId) {
+        product.quantity = product.quantity + 1;
+      }
+      return product;
+    });
+
+    setCartItems(newProducts);
   }
 
   return (
@@ -47,7 +53,7 @@ export default function Cart() {
             <CartCard
               cartItems={n}
               key={n.productId}
-              onClick={() => handleAddQuantity()}
+              onClick={() => handleAddQuantity(n)}
             />
           ))}
           <div className="flex flex-wrap items-center justify-between gap-2 px-10  py-4 ">
@@ -70,10 +76,11 @@ export default function Cart() {
 
 type CartProps = {
   cartItems: CartItem;
+
   onClick: () => void;
 };
 
-function CartCard({ cartItems, onClick }: CartProps) {
+export function CartCard({ cartItems, onClick }: CartProps) {
   const { name, price, imageUrl, quantity } = cartItems;
 
   return (

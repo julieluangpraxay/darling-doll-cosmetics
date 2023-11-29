@@ -1,3 +1,5 @@
+import { Footer } from "../components/Footer";
+
 export function Home() {
   return (
     <div>
@@ -6,6 +8,7 @@ export function Home() {
         className="w-auto"
         alt="cyber babe hero image"
       ></img>
+      <Footer />
     </div>
   );
 }

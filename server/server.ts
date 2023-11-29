@@ -100,16 +100,110 @@ app.get('/api/productImages/:productId', async (req, res, next) => {
   }
 });
 
+// app.post('/api/cart', async (req, res, next) => {
+//   try {
+//     const sql = `
+//     SELECT from "cart"
+//     IF ("productId")
+//     BEGIN
+//     "quantity" + "quantity" + 1
+//     ELSE
+//     INSERT INTO "cart" ("quantity", "productId")
+//     VALUES  ($1, $2)
+//     RETURNING *;
+//     `;
+//     const params = [req.body.quantity, req.body.productId];
+//     const result = await db.query(sql, params);
+//     const cart = result.rows[0];
+
+//     res.json(cart);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 app.post('/api/cart', async (req, res, next) => {
   try {
-    const sql = `
-    INSERT INTO "cart" ("quantity", "productId")
-    VALUES  ($1, $2)
-    RETURNING *;
+    const productId = req.body.productId;
+    const quantity = req.body.quantity;
+
+    // Check if the product already exists in the cart
+    const checkIfExistsQuery = `
+      SELECT * FROM "cart"
+      WHERE "productId" = $1;
     `;
-    const params = [req.body.quantity, req.body.productId];
-    const result = await db.query(sql, params);
-    const cart = result.rows[0];
+    const checkIfExistsParams = [productId];
+    const checkIfExistsResult = await db.query(
+      checkIfExistsQuery,
+      checkIfExistsParams,
+    );
+
+    if (checkIfExistsResult.rows.length > 0) {
+      // If the product exists, update its quantity
+      const updateQuantityQuery = `
+        UPDATE "cart"
+        SET "quantity" = "quantity" + $1
+        WHERE "productId" = $2
+        RETURNING *;
+      `;
+      const updateQuantityParams = [quantity, productId];
+      const updateQuantityResult = await db.query(
+        updateQuantityQuery,
+        updateQuantityParams,
+      );
+      const updatedCart = updateQuantityResult.rows[0];
+      res.json(updatedCart);
+    } else {
+      // If the product doesn't exist, insert it into the cart
+      const insertProductQuery = `
+        INSERT INTO "cart" ("quantity", "productId")
+        VALUES ($1, $2)
+        RETURNING *;
+      `;
+      const insertProductParams = [quantity, productId];
+      const insertProductResult = await db.query(
+        insertProductQuery,
+        insertProductParams,
+      );
+      const newCartItem = insertProductResult.rows[0];
+      res.json(newCartItem);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.post('/api/cart', async (req, res, next) => {
+  try {
+    const productId = req.body.productId;
+    const quantity = req.body.quantity;
+
+    // Check if the product already exists in the cart
+    const checkProduct = await db.query(
+      'SELECT * FROM cart WHERE productId = $1',
+      [productId],
+    );
+
+    if (checkProduct.rows.length > 0) {
+      // If the product exists, update the quantity
+      await db.query(
+        'UPDATE cart SET quantity = quantity + $1 WHERE productId = $2',
+        [quantity, productId],
+      );
+    } else {
+      // If the product doesn't exist, insert it into the cart
+      await db.query('INSERT INTO cart (productId, quantity) VALUES ($1, $2)', [
+        productId,
+        quantity,
+      ]);
+    }
+
+    // Fetch the updated or inserted cart item
+    const updatedCart = await db.query(
+      'SELECT * FROM cart WHERE productId = $1',
+      [productId],
+    );
+    const cart = updatedCart.rows[0];
 
     res.json(cart);
   } catch (err) {

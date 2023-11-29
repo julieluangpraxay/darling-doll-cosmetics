@@ -38,7 +38,6 @@ export function Header({ onSearch, searchText }) {
           </div>
         </div>
       </nav>
-
       <Outlet />
     </div>
   );

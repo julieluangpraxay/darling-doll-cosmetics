@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchCatalog, type Product } from "../lib/api";
 
-export function Catalog({ searchText }) {
+export function Catalog({ searchText, Footer }) {
   const [products, setProducts] = useState<Product[]>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
@@ -48,6 +48,7 @@ export function Catalog({ searchText }) {
           <div>No results found for "{searchText}"</div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

@@ -8,7 +8,7 @@ import {
   addToCart,
 } from "../lib/api";
 
-export function ProductDetails() {
+export function ProductDetails({ Footer }) {
   // Retrieve productId from the route
   const { productId } = useParams();
   const [product, setProduct] = useState<Product>();
@@ -179,6 +179,7 @@ export function ProductDetails() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

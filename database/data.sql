@@ -124,4 +124,14 @@ INSERT INTO "productImages" ("productId", "imageUrl", "video")
     7,
     '/images/fairyeyeshadow.png',
     null
+  ),
+    (
+    5,
+    '/images/mirror.png',
+    null
+  ),
+    (
+    5,
+    '/images/mirror1.png',
+    null
   );

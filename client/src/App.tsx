@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Home } from "./pages/Home";
 import { ProductDetails } from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
+import { Footer } from "./components/Footer";
 
 export default function App() {
   const [serverData, setServerData] = useState("");
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="cart" element={<Cart />}></Route>
           </Route>
         </Routes>
+        <Footer />
       </div>
       <div>{serverData}</div>
     </>

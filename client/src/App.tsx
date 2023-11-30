@@ -28,7 +28,7 @@ export default function App() {
           onSearch={(text) => setSearchText(text)}
           searchText={searchText}
         />
-        <div className="min-h-screen bg-gradient-to-b from-purple-200 via-violet-300 via-white to-white">
+        <div className="max-h-screen bg-gradient-to-b from-purple-200 via-violet-300 via-white to-white">
           <div className="container mx-auto">
             <Routes>
               <Route index element={<Home />} />
@@ -40,8 +40,9 @@ export default function App() {
               <Route path="cart" element={<Cart />} />
             </Routes>
           </div>
-          <Footer />
+
           <div>{serverData}</div>
+          <Footer />
         </div>
       </div>
     </>

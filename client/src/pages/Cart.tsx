@@ -101,7 +101,7 @@ export default function Cart() {
   return (
     <>
       <div>
-        <h1 className="font-heading text-coolGray-800 mb-10 mt-10 text-center text-3xl font-semibold">
+        <h1 className="font-heading p-8 text-center text-3xl font-semibold">
           SHOPPING CART
         </h1>
         <div className="mx-10 mb-6 rounded-3xl bg-pink-50 p-6 shadow-md">

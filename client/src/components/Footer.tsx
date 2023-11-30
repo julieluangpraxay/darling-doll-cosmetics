@@ -3,7 +3,7 @@ export function Footer() {
     <section className="overflow-hidden bg-pink-200">
       <div className="container mx-auto px-1">
         <div className="-m-4 flex flex-wrap items-center justify-between">
-          <div className="w-auto p-2">
+          <div className="w-auto">
             <div className="-m-7 flex flex-wrap items-center">
               <div className="w-auto p-7">
                 <a href="#">
@@ -20,10 +20,9 @@ export function Footer() {
           <div className="w-auto p-4">
             <div className="-m-4 flex flex-wrap items-center">
               <div className="w-auto p-4">
-                <div className="w-auto p-4">
-                  <div className="h-4 w-px bg-white bg-opacity-20" />
-                </div>
-                <div className="w-auto p-4">
+                <div className="h-4 w-px bg-white bg-opacity-20" />
+
+                <div className="w-auto p-2">
                   <ul className="-m-4 flex flex-wrap items-center">
                     <li className="p-4">
                       <a

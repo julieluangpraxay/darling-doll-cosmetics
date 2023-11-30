@@ -43,6 +43,14 @@ CREATE TABLE "customer" (
   "password" text
 );
 
+CREATE TABLE "favorites" (
+  "favoritesId" serial PRIMARY KEY,
+  "customerId" integer,
+  "productId" integer,
+  FOREIGN KEY ("customerId") REFERENCES "customer" ("customerId"),
+  FOREIGN KEY ("productId") REFERENCES "products" ("productId")
+);
+
 ALTER TABLE "productImages" ADD FOREIGN KEY ("productId") REFERENCES "products" ("productId");
 
 ALTER TABLE "cart" ADD FOREIGN KEY ("productId") REFERENCES "products" ("productId");

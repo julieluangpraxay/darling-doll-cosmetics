@@ -12,19 +12,22 @@ export function Home() {
       </div>
       <a href="https://www.instagram.com/darlingdollcosmetics/">
         <h1 className="bold p-8 text-center">FOLLOW US ON INSTAGRAM</h1>
-        <div className="align-center m-auto flex w-1/4 columns-3 justify-center p-8">
+        <div className="align-center m-auto flex w-1/4 columns-3 justify-center p-1">
           <img
             src="/images/home1.png"
             alt="darling doll cosmetics makeup picture"
+            className="rounded-3xl p-4"
           />
           <img
             src="/images/home2.png"
             alt="darling doll cosmetics makeup picture"
+            className="rounded-3xl p-4"
           />
 
           <img
             src="/images/home3.png"
             alt="darling doll cosmetics makeup picture"
+            className="rounded-3xl p-4"
           />
         </div>
       </a>

@@ -6,6 +6,7 @@ import { Home } from "./pages/Home";
 import { ProductDetails } from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import { Footer } from "./components/Footer";
+import { Favorites } from "./pages/Favorites";
 
 export default function App() {
   const [serverData, setServerData] = useState("");
@@ -38,6 +39,7 @@ export default function App() {
               />
               <Route path="details/:productId" element={<ProductDetails />} />
               <Route path="cart" element={<Cart />} />
+              <Route path="favorites" element={<Favorites />} />
             </Routes>
           </div>
 

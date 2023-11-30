@@ -252,6 +252,50 @@ app.put('/api/cart/:cartId', async (req, res, next) => {
   }
 });
 
+app.post('/api/favorites', async (req, res, next) => {
+  try {
+    const productId = req.body.productId;
+    const checkProduct = await db.query(
+      'SELECT * FROM "favorites" WHERE "productId" = $1',
+      [productId],
+    );
+    if (checkProduct.rows.length === 0) {
+      const result = await db.query(
+        `INSERT INTO
+        "favorites" ("productId")
+        VALUES ($1)
+        RETURNING *;`,
+        [productId],
+      );
+      const favorites = result.rows[0];
+      res.json(favorites);
+    } else {
+      res.json(checkProduct.rows[0]);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get('/api/favorites', async (req, res, next) => {
+  try {
+    const sql = `
+    SELECT
+    "productId",
+    "name",
+    "imageUrl",
+    "price",
+    "favoritesId"
+    FROM "favorites"
+    JOIN "products" using ("productId")
+    `;
+    const result = await db.query<Product>(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 
 app.use(errorMiddleware);

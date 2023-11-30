@@ -6,6 +6,7 @@ import {
   ProductImage,
   type Product,
   addToCart,
+  addToFavorites,
 } from "../lib/api";
 
 export function ProductDetails() {
@@ -74,6 +75,16 @@ export function ProductDetails() {
     }
   }
 
+  async function handleAddToFavorites() {
+    if (!productId) return;
+    try {
+      await addToFavorites(+productId);
+      console.log(handleAddToFavorites);
+    } catch (err) {
+      setError(err);
+    }
+  }
+
   return (
     <div className="container flex flex-row">
       <div className="container p-4">
@@ -104,19 +115,20 @@ export function ProductDetails() {
             className="bg-blueGray-900 group relative mb-4 inline-block h-12 w-full rounded-md"
           >
             <div className="absolute left-0 top-0 h-full w-full -translate-x-1 -translate-y-1 transform transition duration-300 group-hover:translate-x-0 group-hover:translate-y-0">
-              <div className="flex h-full w-full items-center justify-center rounded-md border-2 border-black bg-pink-400">
-                <span
-                  className="text-base font-black text-black"
-                  onClick={handleAddToCart}
-                >
+              <div
+                className="flex h-full w-full items-center justify-center rounded-md border-2 border-black bg-pink-400"
+                onClick={handleAddToCart}
+              >
+                <button className="text-base font-black text-black">
                   ADD TO CART
-                </span>
+                </button>
               </div>
             </div>
           </a>
           <a
             href="#"
             className="mb-5 inline-flex w-full items-center justify-center text-black transition duration-200 hover:text-indigo-500"
+            onClick={handleAddToFavorites}
           >
             <svg
               width="20"
@@ -131,7 +143,9 @@ export function ProductDetails() {
                 fill="currentColor"
               ></path>
             </svg>
-            <span className="ml-2 text-sm font-black">ADD TO FAVORITES</span>
+            <button className="ml-2 text-sm font-black">
+              ADD TO FAVORITES
+            </button>
           </a>
           {/* accordian 1 */}
           <div className="ml-2 text-sm font-black">

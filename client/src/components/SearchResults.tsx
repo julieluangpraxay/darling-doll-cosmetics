@@ -38,24 +38,18 @@ export function SearchResults({ searchText, setSearchText }) {
     : products;
 
   return (
-    <div className="bg-black">
-      <div className="bg-white">
-        <div className=" m-auto flex columns-3 flex-wrap justify-center ">
-          {searchedProducts?.length > 0 ? (
-            searchedProducts?.map((product) => (
-              <div
-                key={product.productId}
-                onClick={() => setSearchText("")}
-                className="z-50 w-1/4 p-4"
-              >
-                <ProductResults product={product} />
-              </div>
-            ))
-          ) : (
-            <div>No results found for "{searchText}"</div>
-          )}
-        </div>
-      </div>
+    <div className="">
+      {searchedProducts?.length > 0 ? (
+        <ul className="">
+          {searchedProducts.map((product) => (
+            <li key={product.productId} onClick={() => setSearchText("")}>
+              <ProductResults product={product} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div>No results found for "{searchText}"</div>
+      )}
     </div>
   );
 }
@@ -68,21 +62,22 @@ export function ProductResults({ product }: CardProps) {
   const { productId, name, price, imageUrl } = product;
 
   return (
-    <div className="">
-      <Link to={`/details/${productId}`}>
-        <ul>
-          <li>
-            <div>
-              <img src={imageUrl} alt={name} />
-              <div>
+    <div className="border-b border-black hover:bg-gray-100">
+      <Link
+        to={`/details/${productId}`}
+        className="flex w-1/2 hover:bg-gray-100"
+      >
+        <div className="flex hover:bg-gray-100">
+          <ul className="hover:bg-gray-100 ">
+            <li className="hover:bg-gray-100">
+              <div className="hover:bg-gray-100">
+                <img src={imageUrl} alt={name} className="w-1/2 rounded-3xl" />
                 <p>{name}</p>
-                <div>
-                  <p>${price}</p>
-                </div>
+                <p>${price}</p>
               </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </Link>
     </div>
   );

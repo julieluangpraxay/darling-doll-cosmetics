@@ -22,6 +22,14 @@ export type CartItem = {
   cartId: number;
 };
 
+export type Favorite = {
+  productId: number;
+  name: string;
+  imageUrl: string;
+  price: number;
+  favoriteId: number;
+};
+
 /**
  * Fetches all products from the API.
  * @returns Promise that resolves to an array of products.
@@ -121,5 +129,28 @@ export async function deleteItem(cartId: number) {
   if (!res.ok) {
     throw new Error(`fetch Error ${res.status}`);
   }
+  return await res.json();
+}
+
+export async function addToFavorites(productId: number) {
+  const requestBody = JSON.stringify({ productId });
+
+  const res = await fetch("/api/favorites", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: requestBody,
+  });
+
+  if (!res.ok) {
+    throw new Error(`fetch Error ${res.status}`);
+  }
+  return await res.json();
+}
+
+export async function fetchFavorites(): Promise<Favorite[]> {
+  const res = await fetch("/api/favorites");
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }

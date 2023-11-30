@@ -109,3 +109,17 @@ export async function removeQuantity(cartId: number, quantity: number) {
   }
   return await res.json();
 }
+
+export async function deleteItem(cartId: number) {
+  const res = await fetch(`/api/cart/${cartId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(`fetch Error ${res.status}`);
+  }
+  return await res.json();
+}

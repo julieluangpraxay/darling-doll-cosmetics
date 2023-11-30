@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { CartItem, addQuantity, fetchCart, removeQuantity } from "../lib/api";
+import {
+  CartItem,
+  addQuantity,
+  deleteItem,
+  fetchCart,
+  removeQuantity,
+} from "../lib/api";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
@@ -35,7 +41,9 @@ export default function Cart() {
     return (
       <div>
         Error Loading Cart:{" "}
-        {error instanceof Error ? error.message : "Unknown Error"}
+        {error instanceof Error
+          ? error.message
+          : "Unknconst cart = updatedCart.rows[0];own Error"}
       </div>
     );
 
@@ -53,25 +61,33 @@ export default function Cart() {
 
   async function handleRemoveQuantity(item: CartItem) {
     try {
-      // Decrease the quantity in the backend
-      await removeQuantity(item.cartId, item.quantity - 1); // Assuming there's a function like removeQuantity to decrease the quantity
-
-      // Update the local state by creating a new array with updated quantities
-      const updatedCartItems = cartItems.map((product) => {
-        if (product.cartId === item.cartId) {
-          // Decrease the quantity only for the matching item
-          return {
-            ...product,
-            quantity: product.quantity - 1,
-          };
-        }
-        return product;
-      });
-
-      // Set the state with the updated array
-      setCartItems(updatedCartItems);
+      const newQuantity = item.quantity - 1;
+      if (newQuantity > 0) {
+        await removeQuantity(item.cartId, newQuantity);
+        const updatedCartItems = cartItems.map((product) => {
+          if (product.cartId === item.cartId) {
+            // Decrease the quantity only for the matching item
+            return {
+              ...product,
+              quantity: product.quantity - 1,
+            };
+          }
+          return product;
+        });
+        // Set the state with the updated array
+        setCartItems(updatedCartItems);
+      } else {
+        await deleteItem(item.cartId);
+        const updatedCartItems = cartItems.filter((product) => {
+          if (product.cartId !== item.cartId) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+        setCartItems(updatedCartItems);
+      }
     } catch (err) {
-      // Handle any errors that might occur during the quantity update
       setError(err);
     }
   }

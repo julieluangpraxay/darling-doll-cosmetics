@@ -24,31 +24,26 @@ export default function App() {
   return (
     <>
       <div>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Header
-                onSearch={(text) => setSearchText(text)}
-                searchText={searchText}
+        <Header
+          onSearch={(text) => setSearchText(text)}
+          searchText={searchText}
+        />
+        <div className="min-h-screen bg-gradient-to-b from-purple-200 via-violet-300 via-white to-white">
+          <div className="container mx-auto">
+            <Routes>
+              <Route index element={<Home />} />
+              <Route
+                path="catalog"
+                element={<Catalog searchText={searchText} />}
               />
-            }
-          >
-            <Route index element={<Home />}></Route>
-            <Route
-              path="catalog"
-              element={<Catalog searchText={searchText} />}
-            ></Route>
-            <Route
-              path="details/:productId"
-              element={<ProductDetails />}
-            ></Route>
-            <Route path="cart" element={<Cart />}></Route>
-          </Route>
-        </Routes>
-        <Footer />
+              <Route path="details/:productId" element={<ProductDetails />} />
+              <Route path="cart" element={<Cart />} />
+            </Routes>
+          </div>
+          <Footer />
+          <div>{serverData}</div>
+        </div>
       </div>
-      <div>{serverData}</div>
     </>
   );
 }

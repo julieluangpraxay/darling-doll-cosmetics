@@ -11,7 +11,7 @@ export default function SearchBar({ onSearch, searchText }) {
       />
 
       {searchText && (
-        <div className="absolute flex-wrap divide-solid divide-black border-2 border-b border-solid border-black bg-white object-right-bottom ">
+        <div className="absolute z-10 flex-wrap divide-solid divide-black border-2 border-b border-solid border-black bg-white object-right-bottom ">
           <SearchResults searchText={searchText} setSearchText={onSearch} />
         </div>
       )}

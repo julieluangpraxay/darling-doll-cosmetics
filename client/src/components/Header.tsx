@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export function Header({ onSearch, searchText }) {
   return (
     <div>
-      <div className="bg-purple-300 text-center">
+      <div className="bg-cyan-200 text-center">
         ✨ FREE SHIPPING ON ORDERS OVER $50 ✨
       </div>
       <div className="flex basis-full flex-nowrap items-center justify-center">
@@ -21,10 +21,10 @@ export function Header({ onSearch, searchText }) {
           alt="darling doll cosmetics logo"
         />
 
-        <div className="mr-3 flex basis-1/2 flex-nowrap justify-end gap-5 text-pink-500">
+        <div className="mr-3 flex basis-1/2 flex-nowrap justify-end gap-5 text-black">
           <Link to="/favorites">
             <svg
-              className="w-8 fill-current text-pink-500"
+              className="w-8 fill-current text-black"
               viewBox="0 0 64 64"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"

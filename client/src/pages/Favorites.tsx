@@ -88,11 +88,13 @@ export function CartCard({ favorites }: CartProps) {
           </div>
         </div>
       </Link>
-      <div
-        className="flex h-full w-1/4 items-center justify-center rounded-md border-2 border-black bg-pink-400"
-        onClick={handleAddToCart}
-      >
-        <button className="text-base font-black text-black">ADD TO CART</button>
+      <div className="">
+        <button
+          onClick={handleAddToCart}
+          className="flex h-full w-1/4 -translate-x-1 -translate-y-1 transform items-center justify-center rounded-md border-2 border-black bg-pink-400 text-base font-black text-black transition duration-200 duration-300 hover:text-indigo-500 group-hover:translate-x-0 group-hover:translate-y-0"
+        >
+          ADD TO CART
+        </button>
       </div>
     </>
   );

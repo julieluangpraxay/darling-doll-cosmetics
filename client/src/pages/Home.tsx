@@ -76,7 +76,7 @@ export function Home() {
                   <div className="h-72">
                     <img
                       className="block h-full w-full"
-                      src="/images/home3.png"
+                      src="/images/package.jpg"
                       alt=""
                     />
                   </div>
@@ -113,6 +113,7 @@ export function Home() {
                     <span className="tetx-gray-800 mb-2.5 block text-sm">
                       This is example post
                     </span>
+
                     <div className="flex items-center">
                       <img
                         className="mr-1.5"
@@ -143,18 +144,7 @@ export function Home() {
                       This is example post
                     </span>
                     <div className="flex items-center">
-                      <svg
-                        className="w-8 fill-current text-pink-500"
-                        viewBox="0 0 64 64"
-                        version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          vector-effect="non-scaling-stroke"
-                          d="M32.012,59.616c-1.119-.521-2.365-1.141-3.707-1.859a79.264,79.264,0,0,1-11.694-7.614C6.316,42,.266,32.6.254,22.076,0.244,12.358,7.871,4.506,17.232,4.5a16.661,16.661,0,0,1,11.891,4.99l2.837,2.889,2.827-2.9a16.639,16.639,0,0,1,11.874-5.02h0c9.368-.01,17.008,7.815,17.021,17.539,0.015,10.533-6.022,19.96-16.312,28.128a79.314,79.314,0,0,1-11.661,7.63C34.369,58.472,33.127,59.094,32.012,59.616Z"
-                        ></path>
-                      </svg>
-                      <span className="text-sm text-gray-500">12.903</span>
+                      <span className="text-sm text-gray-500">12,903</span>
                     </div>
                   </div>
                 </div>

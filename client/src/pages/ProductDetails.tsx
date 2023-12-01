@@ -114,12 +114,12 @@ export function ProductDetails() {
             href="#"
             className="bg-blueGray-900 group relative mb-4 inline-block h-12 w-full rounded-md"
           >
-            <div className="absolute left-0 top-0 h-full w-full -translate-x-1 -translate-y-1 transform transition duration-300 group-hover:translate-x-0 group-hover:translate-y-0">
-              <div
-                className="flex h-full w-full items-center justify-center rounded-md border-2 border-black bg-pink-400"
-                onClick={handleAddToCart}
-              >
-                <button className="text-base font-black text-black">
+            <div className="flex h-full w-full -translate-x-1 -translate-y-1 transform transition duration-300 ">
+              <div className="flex h-full w-full items-center justify-center rounded-md border-2 border-black bg-pink-400">
+                <button
+                  onClick={handleAddToCart}
+                  className="text-base font-black text-black transition duration-200 ease-in-out hover:text-indigo-500"
+                >
                   ADD TO CART
                 </button>
               </div>

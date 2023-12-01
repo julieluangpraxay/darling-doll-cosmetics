@@ -60,13 +60,13 @@ export async function fetchImages(productId: number): Promise<ProductImage[]> {
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
-
+// view the cart
 export async function fetchCart(): Promise<CartItem[]> {
   const res = await fetch("/api/cart");
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
-
+// fetch for adding to cart
 export async function addToCart(productId: number) {
   const requestBody = JSON.stringify({ productId, quantity: 1 });
 

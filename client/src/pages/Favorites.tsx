@@ -84,7 +84,7 @@ export function CartCard({ favorites }: CartProps) {
           <div className="m-0 w-full">
             <img src={imageUrl} alt="" className="w-1/4 rounded-3xl" />
             <h2 className="text-rhino-800 text-left">{name}</h2>
-            <p className="text-rhino-800 text-left">${price}</p>
+            <p className="text-rhino-800 p-2 text-left">${price}</p>
           </div>
         </div>
       </Link>

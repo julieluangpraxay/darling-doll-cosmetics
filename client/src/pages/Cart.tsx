@@ -18,6 +18,8 @@ export default function Cart() {
     if (cartItems.length > 0) {
       const newTotalPrice = calculateTotalPrice(cartItems);
       setTotalPrice(newTotalPrice);
+    } else {
+      setTotalPrice(0);
     }
   }, [cartItems]);
 

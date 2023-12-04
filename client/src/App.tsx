@@ -7,6 +7,7 @@ import { ProductDetails } from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import { Footer } from "./components/Footer";
 import { Favorites } from "./pages/Favorites";
+import CheckoutConfirmation from "./pages/CheckoutConfirmation";
 
 export default function App() {
   const [serverData, setServerData] = useState("");
@@ -40,6 +41,7 @@ export default function App() {
               <Route path="details/:productId" element={<ProductDetails />} />
               <Route path="cart" element={<Cart />} />
               <Route path="favorites" element={<Favorites />} />
+              <Route path="checkout" element={<CheckoutConfirmation />} />
             </Routes>
           </div>
 

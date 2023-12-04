@@ -6,13 +6,14 @@ import {
   fetchCart,
   removeQuantity,
 } from "../lib/api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (cartItems.length > 0) {
@@ -121,14 +122,13 @@ export default function Cart() {
               ${totalPrice.toFixed(2)}
             </p>
           </div>
-          <div className="flex flex-wrap justify-end gap-4 p-8">
-            <a
-              className="rounded-xl bg-pink-500 px-4 py-3 text-center text-white transition duration-200 hover:bg-purple-600"
-              href="#"
-            >
-              CHECKOUT
-            </a>
-          </div>
+          <Link
+            to="/checkout"
+            className="rounded-xl bg-pink-500 px-4 py-3 text-center text-white transition duration-200 hover:bg-purple-600"
+            onClick={() => navigate("/checkout")}
+          >
+            CHECKOUT
+          </Link>
         </div>
       </div>
     </>

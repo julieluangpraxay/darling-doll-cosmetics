@@ -106,6 +106,7 @@ app.post('/api/cart', async (req, res, next) => {
     const quantity = req.body.quantity;
 
     // Check if the product already exists in the cart
+
     const checkIfExistsQuery = `
       SELECT * FROM "cart"
       WHERE "productId" = $1;
@@ -118,6 +119,7 @@ app.post('/api/cart', async (req, res, next) => {
 
     if (checkIfExistsResult.rows.length > 0) {
       // If the product exists, update its quantity
+
       const updateQuantityQuery = `
         UPDATE "cart"
         SET "quantity" = "quantity" + $1
@@ -133,6 +135,7 @@ app.post('/api/cart', async (req, res, next) => {
       res.json(updatedCart);
     } else {
       // If the product doesn't exist, insert it into the cart
+
       const insertProductQuery = `
         INSERT INTO "cart" ("quantity", "productId")
         VALUES ($1, $2)

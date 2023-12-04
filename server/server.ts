@@ -299,6 +299,21 @@ app.get('/api/favorites', async (req, res, next) => {
   }
 });
 
+// Add a DELETE endpoint to remove a favorite by favoritesId
+app.delete('/api/favorites/:favoritesId', async (req, res, next) => {
+  try {
+    const { favoritesId } = req.params;
+    const sql = `
+      DELETE FROM "favorites"
+      WHERE "favoritesId" = $1
+    `;
+    await db.query(sql, [favoritesId]);
+    res.sendStatus(204); // Respond with No Content on successful deletion
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 
 app.use(errorMiddleware);

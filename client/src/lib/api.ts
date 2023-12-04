@@ -27,7 +27,7 @@ export type Favorite = {
   name: string;
   imageUrl: string;
   price: number;
-  favoriteId: number;
+  favoritesId: number;
 };
 
 /**
@@ -153,4 +153,14 @@ export async function fetchFavorites(): Promise<Favorite[]> {
   const res = await fetch("/api/favorites");
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
+}
+
+export async function deleteFromFavorites(favoritesId: number) {
+  const res = await fetch(`/api/favorites/${favoritesId}`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) {
+    throw new Error(`fetch Error ${res.status}`);
+  }
 }

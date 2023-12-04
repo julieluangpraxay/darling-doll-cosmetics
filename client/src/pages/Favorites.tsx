@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { CartItem, Favorite, addToCart, fetchFavorites } from "../lib/api";
+import {
+  CartItem,
+  Favorite,
+  addToCart,
+  deleteFromFavorites,
+  fetchFavorites,
+} from "../lib/api";
 import { Link } from "react-router-dom";
 
 export function Favorites() {
@@ -21,6 +27,23 @@ export function Favorites() {
     setIsLoading(true);
     loadCatalog();
   }, []);
+
+  async function handleRemoveFromFavorites({ favoritesId }) {
+    if (!favoritesId) return;
+    try {
+      await deleteFromFavorites(favoritesId);
+      try {
+        const favorites = await fetchFavorites();
+        setFavorites(favorites);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setIsLoading(false);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   if (isLoading || !favorites) return;
   if (error)
@@ -50,6 +73,7 @@ export function Favorites() {
                 quantity: 0,
                 cartId: 0,
               }}
+              onDelete={handleRemoveFromFavorites}
             />
           ))}
 
@@ -63,10 +87,11 @@ export function Favorites() {
 type CartProps = {
   cartItems: CartItem;
   favorites: Favorite;
+  onDelete: ({ favoritesId }: { favoritesId: any }) => Promise<void>;
 };
 
-export function CartCard({ favorites }: CartProps) {
-  const { name, price, imageUrl, productId } = favorites;
+export function CartCard({ favorites, onDelete }: CartProps) {
+  const { name, price, imageUrl, productId, favoritesId } = favorites;
 
   async function handleAddToCart() {
     if (!productId) return;
@@ -88,6 +113,7 @@ export function CartCard({ favorites }: CartProps) {
           </div>
         </div>
       </Link>
+
       <div className="">
         <button
           onClick={handleAddToCart}
@@ -96,6 +122,7 @@ export function CartCard({ favorites }: CartProps) {
           ADD TO CART
         </button>
       </div>
+      <button onClick={() => onDelete({ favoritesId })}>Delete</button>
     </>
   );
 }

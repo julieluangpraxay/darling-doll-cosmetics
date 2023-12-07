@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import MobileSearchBar from "./MobileSearchBar";
 
 export function Header({ onSearch, searchText }) {
   return (
@@ -10,7 +11,7 @@ export function Header({ onSearch, searchText }) {
         ✨ FREE SHIPPING ON ORDERS OVER $50 ✨
       </div>
       <div className="flex items-center justify-center lg:basis-full lg:flex-nowrap">
-        <div className="basis-1/2 sm:hidden">
+        <div className="basis-1/2">
           <div>
             <SearchBar onSearch={onSearch} searchText={searchText} />
           </div>
@@ -21,10 +22,10 @@ export function Header({ onSearch, searchText }) {
           alt="darling doll cosmetics logo"
         />
 
-        <div className="mr-3 flex basis-1/2 flex-nowrap justify-end gap-5 text-black">
+        <div className="mr-4 flex basis-1/2 flex-nowrap justify-end gap-5 text-black">
           <Link to="/favorites">
             <svg
-              className="w-8 fill-current text-black"
+              className="w-6 fill-current text-black"
               viewBox="0 0 64 64"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -36,21 +37,22 @@ export function Header({ onSearch, searchText }) {
             </svg>
           </Link>
           <Link to="/cart">
-            <FontAwesomeIcon icon={faCartShopping} size="2xl" />
+            <FontAwesomeIcon icon={faCartShopping} size="xl" />
           </Link>
         </div>
       </div>
 
-      {/* Updated navbar with responsive classes */}
       <nav className="bg-customPink p-5">
         <div className="flex justify-between">
-          {/* Use flex-col for small screens and flex-row for larger screens */}
-          <ul className="flex gap-10 sm:flex-row">
+          <ul className="flex gap-10">
             <li>
               <Link to="/">HOME</Link>
             </li>
             <li>
               <Link to="/catalog">SHOP ALL</Link>
+            </li>
+            <li>
+              <MobileSearchBar onSearch={onSearch} searchText={searchText} />
             </li>
           </ul>
         </div>

@@ -7,8 +7,7 @@ p {
 }
 
 * {
-  font-family: roboto, sans-serif;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 input[type="range"]::-webkit-slider-thumb {

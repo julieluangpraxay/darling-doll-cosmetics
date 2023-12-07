@@ -7,7 +7,7 @@ export default function SearchBar({ onSearch, searchText }) {
   const [showResults, setShowResults] = useState(false);
 
   return (
-    <div className="ml-4 flex items-center">
+    <div className="ml-4 hidden items-center sm:flex">
       <div className="relative">
         <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
         <input

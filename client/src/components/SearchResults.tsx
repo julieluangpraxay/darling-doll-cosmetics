@@ -38,9 +38,9 @@ export function SearchResults({ searchText, setSearchText }) {
     : products;
 
   return (
-    <div className="">
+    <div>
       {searchedProducts?.length > 0 ? (
-        <ul className="">
+        <ul>
           {searchedProducts.map((product) => (
             <li key={product.productId} onClick={() => setSearchText("")}>
               <ProductResults product={product} />

@@ -1,15 +1,11 @@
 export function Footer() {
   return (
-    <section className="overflow-hidden bg-customPink p-4">
+    <footer className="bottom-0 w-full bg-customPink p-4">
       <div className="container mx-auto px-1">
         <div className="-m-4 flex flex-wrap items-center justify-between">
           <div className="w-auto">
             <div className="-m-7 flex flex-wrap items-center">
-              <div className="w-auto p-7">
-                <a href="#">
-                  <img src="basko-assets/logos/basko-logo-light.png" alt="" />
-                </a>
-              </div>
+              <div className="w-auto p-7"></div>
               <div className="w-auto">
                 <p className="text-sm tracking-tight text-white">
                   © Copyright 2023 Darling Doll Cosmetics
@@ -20,29 +16,9 @@ export function Footer() {
           <div className="w-auto p-4">
             <div className="-m-4 flex flex-wrap items-center">
               <div className="w-auto p-4">
-                <div className="h-4 w-px bg-white bg-opacity-20" />
-
+                <div className="h-4 w-px" />
                 <div className="w-auto">
                   <ul className="-m-4 flex flex-wrap items-center">
-                    <li className="p-4">
-                      <a
-                        className="text-white transition duration-200 hover:text-gray-300"
-                        href="https://www.twitter.com/darlingdollz/"
-                      >
-                        <svg
-                          width={14}
-                          height={12}
-                          viewBox="0 0 14 12"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M13.6488 1.81473C13.137 2.04222 12.5967 2.18439 12.028 2.2697C12.5967 1.92847 13.0517 1.38821 13.2507 0.734202C12.7105 1.04699 12.1133 1.27447 11.4593 1.41664C10.9475 0.876377 10.2082 0.535156 9.41201 0.535156C7.87652 0.535156 6.62537 1.7863 6.62537 3.32179C6.62537 3.54927 6.65381 3.74832 6.71068 3.94737C4.40744 3.83363 2.33168 2.72466 0.938358 1.01855C0.710877 1.44508 0.568702 1.90004 0.568702 2.41187C0.568702 3.37866 1.0521 4.23172 1.81985 4.74355C1.36488 4.71511 0.938358 4.60137 0.540266 4.40233V4.43076C0.540266 5.79564 1.50706 6.93305 2.78664 7.18896C2.55916 7.24583 2.30324 7.27427 2.04733 7.27427C1.87672 7.27427 1.67767 7.24583 1.50706 7.2174C1.87672 8.32637 2.90038 9.15098 4.12309 9.15098C3.15629 9.8903 1.96202 10.3453 0.654007 10.3453C0.426526 10.3453 0.199046 10.3453 0 10.3168C1.25114 11.113 2.70133 11.568 4.2937 11.568C9.44045 11.568 12.2555 7.3027 12.2555 3.60614C12.2555 3.4924 12.2555 3.35023 12.2555 3.23649C12.7958 2.86683 13.2792 2.38344 13.6488 1.81473Z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </a>
-                    </li>
                     <li className="p-4">
                       <a
                         className="text-white transition duration-200 hover:text-gray-300"
@@ -96,6 +72,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }

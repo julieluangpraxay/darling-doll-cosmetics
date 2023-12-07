@@ -65,13 +65,13 @@ export function ProductResults({ product }: CardProps) {
     <div className="border-b border-black hover:bg-gray-100">
       <Link
         to={`/details/${productId}`}
-        className="flex w-1/2 hover:bg-gray-100"
+        className="flex w-3/4 hover:bg-gray-100"
       >
         <div className="flex hover:bg-gray-100">
           <ul className="hover:bg-gray-100 ">
             <li className="hover:bg-gray-100">
               <div className="hover:bg-gray-100">
-                <img src={imageUrl} alt={name} className="w-1/2 rounded-3xl" />
+                <img src={imageUrl} alt={name} className="w-1/2 rounded" />
                 <p>{name}</p>
                 <p>${price}</p>
               </div>

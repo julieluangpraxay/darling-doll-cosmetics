@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <section className="overflow-hidden bg-pink-200">
+    <section className="overflow-hidden bg-customPink p-4">
       <div className="container mx-auto px-1">
         <div className="-m-4 flex flex-wrap items-center justify-between">
           <div className="w-auto">
@@ -10,7 +10,7 @@ export function Footer() {
                   <img src="basko-assets/logos/basko-logo-light.png" alt="" />
                 </a>
               </div>
-              <div className="w-auto p-1">
+              <div className="w-auto">
                 <p className="text-sm tracking-tight text-white">
                   © Copyright 2023 Darling Doll Cosmetics
                 </p>
@@ -22,7 +22,7 @@ export function Footer() {
               <div className="w-auto p-4">
                 <div className="h-4 w-px bg-white bg-opacity-20" />
 
-                <div className="w-auto p-2">
+                <div className="w-auto">
                   <ul className="-m-4 flex flex-wrap items-center">
                     <li className="p-4">
                       <a

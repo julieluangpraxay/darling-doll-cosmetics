@@ -6,11 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export function Header({ onSearch, searchText }) {
   return (
     <div>
-      <div className="bg-cyan-200 text-center">
+      <div className="bg-customBlue text-center">
         ✨ FREE SHIPPING ON ORDERS OVER $50 ✨
       </div>
-      <div className="flex basis-full flex-nowrap items-center justify-center">
-        <div className="basis-1/2">
+      <div className="flex items-center justify-center lg:basis-full lg:flex-nowrap">
+        <div className="basis-1/2 sm:hidden">
           <div>
             <SearchBar onSearch={onSearch} searchText={searchText} />
           </div>
@@ -41,9 +41,11 @@ export function Header({ onSearch, searchText }) {
         </div>
       </div>
 
-      <nav className="bg-pink-200 p-5">
-        <div className="flex basis-1/2 justify-between">
-          <ul className="flex gap-10">
+      {/* Updated navbar with responsive classes */}
+      <nav className="bg-customPink p-5">
+        <div className="flex justify-between">
+          {/* Use flex-col for small screens and flex-row for larger screens */}
+          <ul className="flex gap-10 sm:flex-row">
             <li>
               <Link to="/">HOME</Link>
             </li>

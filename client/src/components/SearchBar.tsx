@@ -4,7 +4,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function SearchBar({ onSearch, searchText }) {
   return (
-    <div className="align-center m-auto justify-center p-4">
+    <div className="align-center m-auto justify-center p-4 sm:hidden md:hidden">
       <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
       <input
         type="search"

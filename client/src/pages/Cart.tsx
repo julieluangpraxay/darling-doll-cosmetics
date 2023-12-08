@@ -108,27 +108,35 @@ export default function Cart() {
           SHOPPING CART
         </h1>
         <div className="mx-10 mb-6 rounded-3xl bg-pink-50 p-6 shadow-md">
-          {cartItems.map((item) => (
-            <CartCard
-              cartItems={item}
-              key={item.productId}
-              onAddClick={() => handleAddQuantity(item)} // Pass the add function
-              onMinusClick={() => handleRemoveQuantity(item)} // Pass the minus function
-            />
-          ))}
-          <div className="flex flex-wrap items-center justify-between gap-2 px-10  py-4 ">
-            <p className="text-rhino-700 text-lg font-semibold">SUBTOTAL</p>
-            <p className="text-rhino-800 text-lg font-semibold">
-              ${totalPrice.toFixed(2)}
-            </p>
-          </div>
-          <Link
-            to="/checkout"
-            className="rounded-xl bg-pink-500 px-4 py-3 text-center text-white transition duration-200 hover:bg-purple-600"
-            onClick={() => navigate("/checkout")}
-          >
-            CHECKOUT
-          </Link>
+          {cartItems.length === 0 ? (
+            <p>Your cart is empty!</p>
+          ) : (
+            <>
+              {cartItems.map((item) => (
+                <CartCard
+                  cartItems={item}
+                  key={item.productId}
+                  onAddClick={() => handleAddQuantity(item)}
+                  onMinusClick={() => handleRemoveQuantity(item)}
+                />
+              ))}
+              <div className="flex flex-wrap items-center justify-between gap-2 px-10  py-4 ">
+                <p className="text-rhino-700 text-lg font-semibold">SUBTOTAL</p>
+                <p className="text-rhino-800 text-lg font-semibold">
+                  ${totalPrice.toFixed(2)}
+                </p>
+              </div>
+              <div className="flex-end flex">
+                <Link
+                  to="/checkout"
+                  className="rounded-xl bg-pink-500 px-4 py-3 text-center text-white transition duration-200 hover:bg-purple-600"
+                  onClick={() => navigate("/checkout")}
+                >
+                  CHECKOUT
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

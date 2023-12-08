@@ -56,31 +56,30 @@ export function Favorites() {
 
   return (
     <>
-      <div className="justify-center p-8 text-xl font-bold">
+      <div className="p-8 text-center text-xl font-bold">
         <h1>FAVORITES</h1>
       </div>
-      <div className="flex text-center sm:w-1/2">
-        <div className="columns-2 border border-black p-4 text-xs">
-          {favorites.map((item) => (
-            <ul>
-              <li>
-                <CartCard
-                  favorites={item}
-                  key={item.productId}
-                  cartItems={{
-                    productId: 0,
-                    name: "",
-                    imageUrl: "",
-                    price: 0,
-                    quantity: 0,
-                    cartId: 0,
-                  }}
-                  onDelete={handleRemoveFromFavorites}
-                />
-              </li>
-            </ul>
-          ))}
-        </div>
+      <div className="m-0 flex flex-wrap justify-center p-4">
+        {favorites.map((item) => (
+          <div
+            key={item.productId}
+            className="mb-8 w-full px-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4"
+          >
+            <CartCard
+              favorites={item}
+              key={item.productId}
+              cartItems={{
+                productId: 0,
+                name: "",
+                imageUrl: "",
+                price: 0,
+                quantity: 0,
+                cartId: 0,
+              }}
+              onDelete={handleRemoveFromFavorites}
+            />
+          </div>
+        ))}
       </div>
     </>
   );
@@ -115,26 +114,26 @@ export function CartCard({ favorites, onDelete }: CartProps) {
               className="w-full rounded
             "
             />
-            <h2 className="text-rhino-800 text-left">{name}</h2>
-            <p className="text-rhino-800 p-2 text-left">${price}</p>
+            <h2 className="text-sm">{name}</h2>
+            <p className="p-2  text-sm">${price}</p>
           </div>
         </div>
       </Link>
 
-      <div className="">
+      <div className="flex justify-between">
         <button
           onClick={handleAddToCart}
-          className="border-1 -translate-x-1 -translate-y-1 transform items-center justify-center rounded-md border-black bg-pink-300 text-base font-black text-black transition duration-200 duration-300 hover:text-indigo-500 group-hover:translate-x-0 group-hover:translate-y-0"
+          className="border-1 -translate-x-1 -translate-y-1 transform items-center justify-center rounded-md border-black bg-pink-300 p-2 text-base font-black text-black transition duration-200 duration-300 hover:text-indigo-500 group-hover:translate-x-0 group-hover:translate-y-0"
         >
           ADD TO CART
         </button>
+        <button
+          className="border-1 -translate-x-1 -translate-y-1 transform items-center justify-center rounded-md border-black bg-pink-300 p-2 text-base font-black text-black transition duration-200 duration-300 hover:text-indigo-500 group-hover:translate-x-0 group-hover:translate-y-0"
+          onClick={() => onDelete({ favoritesId })}
+        >
+          Remove
+        </button>
       </div>
-      <button
-        className="rounded bg-pink-300 p-1"
-        onClick={() => onDelete({ favoritesId })}
-      >
-        Remove
-      </button>
     </>
   );
 }

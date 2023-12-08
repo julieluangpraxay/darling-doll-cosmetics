@@ -30,7 +30,7 @@ export default function App() {
           onSearch={(text) => setSearchText(text)}
           searchText={searchText}
         />
-        <div className="max-h-screen bg-gradient-to-b from-customPurple via-violet-300 via-white to-white">
+        <div className="max-h-screen bg-gradient-to-b from-customPurple via-cyan-100 via-pink-200 to-white">
           <div className="container mx-auto">
             <Routes>
               <Route index element={<Home />} />

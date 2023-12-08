@@ -57,7 +57,7 @@ export function Header({ onSearch, searchText }) {
         </div>
       </div>
 
-      <nav className="bg-customPink p-5">
+      <nav className="bg-customPink p-5 font-bold">
         <div className="flex justify-between">
           <ul className=" flex gap-10 ">
             <li>

@@ -10,9 +10,27 @@ export function Home() {
           className="rounded-3xl"
         ></video>
       </div>
+      {/* collection images */}
+      <div className="m-0 flex w-full items-center justify-center gap-10 pb-8">
+        <img
+          src="/images/darling1.png"
+          alt="lashes"
+          className="w-1/4 rounded"
+        />
+        <img
+          src="/images/darling2.jpg"
+          alt="model with eyeshadow palette"
+          className="w-1/4 rounded"
+        />
+        <img
+          src="/images/darling3.png"
+          alt="lashes, lip gloss and eyeliner"
+          className="w-1/4 rounded"
+        />
+      </div>
       <section className="relative overflow-hidden pb-20">
         <div className="container relative mx-auto">
-          <div className=" text-center">
+          <div className="text-center">
             <span className="mb-4 inline-block rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-900">
               SOCIAL MEDIA
             </span>
@@ -21,7 +39,7 @@ export function Home() {
               <span className="font-serif italic">instagram</span>
             </h1>
           </div>
-          <div className="relative mx-auto max-w-sm sm:max-w-7xl">
+          <div className="relative mx-auto max-w-sm font-semibold sm:max-w-7xl">
             <img
               className="absolute right-0 top-0 -mt-40"
               src="saturn-assets/images/instagram-photos/blue-center-light.png"
@@ -200,7 +218,7 @@ export function Home() {
                     </div>
                     <p className="text-sm text-gray-500">1,903 Likes</p>
                     <p className="tetx-gray-800 mt-2.5">
-                      Darling Doll Lashes in acrylic cases are now SOLD OUT!
+                      Say hello to our new custom packaging!
                     </p>
                   </div>
                 </div>
@@ -287,7 +305,7 @@ export function Home() {
                     </div>
                     <p className="text-sm text-gray-500">1,903 Likes</p>
                     <p className="tetx-gray-800 mt-2.5">
-                      Darling Doll Lashes in acrylic cases are now SOLD OUT!
+                      The Magical Darlings Palettes are now officially SOLD OUT!
                     </p>
                   </div>
                 </div>
@@ -374,7 +392,7 @@ export function Home() {
                     </div>
                     <p className="text-sm text-gray-500">1,903 Likes</p>
                     <p className="tetx-gray-800 mt-2.5">
-                      Darling Doll Lashes in acrylic cases are now SOLD OUT!
+                      Your favorite lashes are back in stock!
                     </p>
                   </div>
                 </div>

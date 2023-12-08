@@ -104,12 +104,14 @@ export default function Cart() {
   return (
     <>
       <div>
-        <h1 className="font-heading p-8 text-center text-3xl font-semibold">
+        <h1 className="font-heading pb-12 pb-20 pt-12 text-center text-3xl font-semibold">
           SHOPPING CART
         </h1>
-        <div className="mx-10 mb-6 rounded-3xl bg-pink-50 p-6 shadow-md">
+        <div className="mx-10 mb-12 rounded-3xl bg-pink-50 p-8 shadow-md">
           {cartItems.length === 0 ? (
-            <p>Your cart is empty!</p>
+            <p className="bold mb-20 text-center text-lg">
+              Your cart is empty!
+            </p>
           ) : (
             <>
               {cartItems.map((item) => (
@@ -126,7 +128,7 @@ export default function Cart() {
                   ${totalPrice.toFixed(2)}
                 </p>
               </div>
-              <div className="flex-end flex">
+              <div className="flex justify-end py-10">
                 <Link
                   to="/checkout"
                   className="rounded-xl bg-pink-500 px-4 py-3 text-center text-white transition duration-200 hover:bg-purple-600"

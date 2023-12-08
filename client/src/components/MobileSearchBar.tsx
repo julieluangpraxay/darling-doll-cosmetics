@@ -13,7 +13,7 @@ export default function MobileSearchBar({ onSearch, searchText }) {
             onChange={(e) => onSearch(e.currentTarget.value)}
             value={searchText}
             placeholder="Search..."
-            className="ml-2 w-40 p-2 focus:border-blue-500 focus:outline-none sm:w-60"
+            className="ml-2 w-40 bg-white p-2 focus:border-blue-500 focus:outline-none sm:w-60"
           />
         </div>
       </div>

@@ -17,7 +17,6 @@ export default function App() {
     async function readServerData() {
       const resp = await fetch("/api/products");
       const data = await resp.json();
-      console.log("Data from server:", data);
       setServerData(data.message);
     }
     readServerData();

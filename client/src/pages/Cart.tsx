@@ -103,7 +103,7 @@ export default function Cart() {
 
   return (
     <>
-      <div>
+      <div className="pb-24">
         <h1 className="font-heading pb-12 pb-20 pt-12 text-center text-3xl font-semibold">
           SHOPPING CART
         </h1>

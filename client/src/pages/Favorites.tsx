@@ -59,28 +59,37 @@ export function Favorites() {
       <div className="p-8 text-center text-xl font-bold">
         <h1>FAVORITES</h1>
       </div>
-      <div className="m-0 flex flex-wrap justify-center p-4">
-        {favorites.map((item) => (
-          <div
-            key={item.productId}
-            className="mb-8 w-full px-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4"
-          >
-            <CartCard
-              favorites={item}
+      {favorites.length === 0 ? (
+        <div className="text-center">
+          <p className="text-base">
+            There are currently no favorited items. Click "add to favorites" to
+            add to this list!
+          </p>
+        </div>
+      ) : (
+        <div className="m-0 flex flex-wrap justify-center p-4">
+          {favorites.map((item) => (
+            <div
               key={item.productId}
-              cartItems={{
-                productId: 0,
-                name: "",
-                imageUrl: "",
-                price: 0,
-                quantity: 0,
-                cartId: 0,
-              }}
-              onDelete={handleRemoveFromFavorites}
-            />
-          </div>
-        ))}
-      </div>
+              className="mb-8 w-full px-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4"
+            >
+              <CartCard
+                favorites={item}
+                key={item.productId}
+                cartItems={{
+                  productId: 0,
+                  name: "",
+                  imageUrl: "",
+                  price: 0,
+                  quantity: 0,
+                  cartId: 0,
+                }}
+                onDelete={handleRemoveFromFavorites}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 }

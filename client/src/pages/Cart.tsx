@@ -14,6 +14,7 @@ export default function Cart() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
+  const [cartQuantity, setCartQuantity] = useState(0);
 
   useEffect(() => {
     if (cartItems.length > 0) {
@@ -55,6 +56,7 @@ export default function Cart() {
     const newProducts = cartItems.map((product) => {
       if (product.cartId === item.cartId) {
         product.quantity = product.quantity + 1;
+        setCartQuantity(cartQuantity + 1);
       }
       return product;
     });
@@ -77,6 +79,11 @@ export default function Cart() {
           }
           return product;
         });
+        const totalQuantity = updatedCartItems.reduce(
+          (total, product) => total + product.quantity,
+          0,
+        );
+        setCartQuantity(totalQuantity);
         // Set the state with the updated array
         setCartItems(updatedCartItems);
       } else {

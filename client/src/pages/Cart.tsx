@@ -40,6 +40,31 @@ export default function Cart() {
     loadCatalog();
   }, []);
 
+  useEffect(() => {
+    // Your initial fetch logic for cart items and setting quantity
+    async function fetchCartAndSetQuantity() {
+      try {
+        const cartItems = await fetchCart(); // Fetch cart items
+        const totalQuantity = cartItems.reduce(
+          (total, product) => total + product.quantity,
+          0,
+        );
+        setCartItems(cartItems);
+        setCartQuantity(totalQuantity);
+      } catch (error) {
+        // Handle error fetching cart
+      }
+    }
+    fetchCartAndSetQuantity();
+  }, []);
+
+  useEffect(() => {
+    // Logic to update cart quantity based on cart items change
+    setCartQuantity(
+      cartItems.reduce((total, product) => total + product.quantity, 0),
+    );
+  }, [cartItems]);
+
   if (isLoading || !cartItems) return;
   if (error)
     return (

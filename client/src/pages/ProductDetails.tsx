@@ -79,7 +79,6 @@ export function ProductDetails() {
     if (!productId) return;
     try {
       await addToFavorites(+productId);
-      console.log(handleAddToFavorites);
     } catch (err) {
       setError(err);
     }

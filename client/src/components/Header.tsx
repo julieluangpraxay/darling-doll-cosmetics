@@ -26,10 +26,10 @@ export function Header({ onSearch, searchText, cartQuantity }) {
           alt="darling doll cosmetics logo"
         />
 
-        <div className=" mr-4 flex basis-1/2 flex-nowrap justify-end gap-3 text-black">
+        <div className="mr-4 flex basis-1/2 flex-nowrap justify-end gap-3 text-black">
           <Link to="/favorites">
             <svg
-              className={`transform-glow w-6 cursor-pointer fill-current text-black transition-transform ${
+              className={`transform-glow w-8 cursor-pointer fill-current text-black transition-transform ${
                 isFavoriteHovered ? "hover:scale-110" : ""
               }`}
               viewBox="0 0 64 64"
@@ -44,7 +44,7 @@ export function Header({ onSearch, searchText, cartQuantity }) {
           <Link to="/cart">
             <FontAwesomeIcon
               icon={faCartShopping}
-              size="xl"
+              size="2xl"
               className={`transform-glow cursor-pointer transition-transform ${
                 isCartHovered ? "hover:scale-110" : ""
               }`}
@@ -52,8 +52,8 @@ export function Header({ onSearch, searchText, cartQuantity }) {
               onMouseOut={() => setIsCartHovered(false)}
             />
           </Link>
-          {/* circle to show cart quantity, still need the logic for it to work */}
-          <div className="absolute top-12 rounded-full bg-pink-200 p-1">
+          {/* circle to show cart quantity*/}
+          <div className="absolute right-2 top-14 h-6 w-6 rounded-full bg-black text-center text-white">
             {cartQuantity}
           </div>
         </div>

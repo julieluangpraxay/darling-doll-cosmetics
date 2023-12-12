@@ -23,7 +23,7 @@ interface CartContextProps {
 
 const initialCartContext: CartContextProps = {
   cartQuantity: 0,
-  setCartQuantity: () => {}, // You can set a default function here or use null if needed
+  setCartQuantity: () => {},
 };
 
 const CartContext = createContext<CartContextProps | null>(initialCartContext);
@@ -48,7 +48,7 @@ export default function App() {
     // Fetch cart items and update cart quantity whenever there's a change in the cart
     async function fetchAndSetCartQuantity() {
       try {
-        const cartItems = await fetchCart(); // Fetch cart items (replace this with your fetch logic)
+        const cartItems = await fetchCart();
         const totalQuantity = cartItems.reduce(
           (total, product) => total + product.quantity,
           0,
@@ -59,7 +59,7 @@ export default function App() {
       }
     }
     fetchAndSetCartQuantity();
-  }, []); // Update when cartQuantity changes
+  }, []);
 
   return (
     <>

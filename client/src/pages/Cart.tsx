@@ -14,7 +14,6 @@ export default function Cart({ CartContext }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
-  // const [cartQuantity, setCartQuantity] = useState(0);
   const { cartQuantity, setCartQuantity } = useContext(CartContext);
 
   useEffect(() => {

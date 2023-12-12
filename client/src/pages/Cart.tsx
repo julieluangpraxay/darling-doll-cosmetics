@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
   CartItem,
   addQuantity,
@@ -8,13 +8,14 @@ import {
 } from "../lib/api";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Cart() {
+export default function Cart({ CartContext }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
-  const [cartQuantity, setCartQuantity] = useState(0);
+  // const [cartQuantity, setCartQuantity] = useState(0);
+  const { cartQuantity, setCartQuantity } = useContext(CartContext);
 
   useEffect(() => {
     if (cartItems.length > 0) {
@@ -56,14 +57,14 @@ export default function Cart() {
       }
     }
     fetchCartAndSetQuantity();
-  }, []);
+  }, [setCartQuantity]);
 
   useEffect(() => {
     // Logic to update cart quantity based on cart items change
     setCartQuantity(
       cartItems.reduce((total, product) => total + product.quantity, 0),
     );
-  }, [cartItems]);
+  }, [cartItems, setCartQuantity]);
 
   if (isLoading || !cartItems) return;
   if (error)
@@ -77,16 +78,21 @@ export default function Cart() {
     );
 
   async function handleAddQuantity(item: CartItem) {
-    await addQuantity(item.cartId, item.quantity + 1);
-    const newProducts = cartItems.map((product) => {
-      if (product.cartId === item.cartId) {
-        product.quantity = product.quantity + 1;
-        setCartQuantity(cartQuantity + 1);
-      }
-      return product;
-    });
+    try {
+      await addQuantity(item.cartId, item.quantity + 1);
+      const newProducts = cartItems.map((product) => {
+        if (product.cartId === item.cartId) {
+          product.quantity = product.quantity + 1;
+          return product;
+        }
+        return product;
+      });
 
-    setCartItems(newProducts);
+      setCartItems(newProducts);
+      setCartQuantity(cartQuantity + 1); // Update the cart quantity directly
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async function handleRemoveQuantity(item: CartItem) {
@@ -96,7 +102,6 @@ export default function Cart() {
         await removeQuantity(item.cartId, newQuantity);
         const updatedCartItems = cartItems.map((product) => {
           if (product.cartId === item.cartId) {
-            // Decrease the quantity only for the matching item
             return {
               ...product,
               quantity: product.quantity - 1,
@@ -104,26 +109,19 @@ export default function Cart() {
           }
           return product;
         });
-        const totalQuantity = updatedCartItems.reduce(
-          (total, product) => total + product.quantity,
-          0,
-        );
-        setCartQuantity(totalQuantity);
-        // Set the state with the updated array
+
         setCartItems(updatedCartItems);
+        setCartQuantity(cartQuantity - 1); // Update the cart quantity directly
       } else {
         await deleteItem(item.cartId);
-        const updatedCartItems = cartItems.filter((product) => {
-          if (product.cartId !== item.cartId) {
-            return true;
-          } else {
-            return false;
-          }
-        });
+        const updatedCartItems = cartItems.filter(
+          (product) => product.cartId !== item.cartId,
+        );
         setCartItems(updatedCartItems);
+        setCartQuantity(cartQuantity - item.quantity); // Update the cart quantity directly
       }
-    } catch (err) {
-      setError(err);
+    } catch (error) {
+      console.error(error);
     }
   }
 

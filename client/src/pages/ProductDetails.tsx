@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import {
   fetchImages,
@@ -9,7 +9,7 @@ import {
   addToFavorites,
 } from "../lib/api";
 
-export function ProductDetails() {
+export function ProductDetails({ CartContext }) {
   // Retrieve productId from the route
   const { productId } = useParams();
   const [product, setProduct] = useState<Product>();
@@ -17,6 +17,7 @@ export function ProductDetails() {
   const [error, setError] = useState<unknown>();
   const [images, setImages] = useState<ProductImage[]>();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { cartQuantity, setCartQuantity } = useContext(CartContext);
 
   useEffect(() => {
     async function loadProduct(productId: number) {
@@ -70,6 +71,7 @@ export function ProductDetails() {
     if (!productId) return;
     try {
       await addToCart(+productId);
+      setCartQuantity(cartQuantity + 1);
     } catch (err) {
       setError(err);
     }

@@ -1,7 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Catalog } from "./pages/Catalog";
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+  createContext,
+  SetStateAction,
+  Dispatch,
+} from "react";
 import { Home } from "./pages/Home";
 import { ProductDetails } from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
@@ -9,6 +15,20 @@ import { Footer } from "./components/Footer";
 import { Favorites } from "./pages/Favorites";
 import CheckoutConfirmation from "./pages/CheckoutConfirmation";
 import { fetchCart } from "./lib/api";
+
+interface CartContextProps {
+  cartQuantity: number;
+  setCartQuantity: Dispatch<SetStateAction<number>>;
+}
+
+const initialCartContext: CartContextProps = {
+  cartQuantity: 0,
+  setCartQuantity: () => {}, // You can set a default function here or use null if needed
+};
+
+const CartContext = createContext<CartContextProps | null>(initialCartContext);
+
+export { CartContext };
 
 export default function App() {
   const [serverData, setServerData] = useState("");
@@ -43,31 +63,39 @@ export default function App() {
 
   return (
     <>
-      <div>
-        <Header
-          onSearch={(text) => setSearchText(text)}
-          searchText={searchText}
-          cartQuantity={cartQuantity}
-        />
-        <div className=" max-h-screen bg-gradient-to-b from-customPurple via-cyan-100 to-white">
-          <div className="mx-auto">
-            <Routes>
-              <Route index element={<Home />} />
-              <Route
-                path="catalog"
-                element={<Catalog searchText={searchText} />}
-              />
-              <Route path="details/:productId" element={<ProductDetails />} />
-              <Route path="cart" element={<Cart />} />
-              <Route path="favorites" element={<Favorites />} />
-              <Route path="checkout" element={<CheckoutConfirmation />} />
-            </Routes>
-          </div>
+      <CartContext.Provider value={{ cartQuantity, setCartQuantity }}>
+        <div>
+          <Header
+            onSearch={(text) => setSearchText(text)}
+            searchText={searchText}
+            cartQuantity={cartQuantity}
+          />
+          <div className=" max-h-screen bg-gradient-to-b from-customPurple via-cyan-100 to-white">
+            <div className="mx-auto">
+              <Routes>
+                <Route index element={<Home />} />
+                <Route
+                  path="catalog"
+                  element={<Catalog searchText={searchText} />}
+                />
+                <Route
+                  path="details/:productId"
+                  element={<ProductDetails CartContext={CartContext} />}
+                />
+                <Route
+                  path="cart"
+                  element={<Cart CartContext={CartContext} />}
+                />
+                <Route path="favorites" element={<Favorites />} />
+                <Route path="checkout" element={<CheckoutConfirmation />} />
+              </Routes>
+            </div>
 
-          <div>{serverData}</div>
-          <Footer />
+            <div>{serverData}</div>
+            <Footer />
+          </div>
         </div>
-      </div>
+      </CartContext.Provider>
     </>
   );
 }

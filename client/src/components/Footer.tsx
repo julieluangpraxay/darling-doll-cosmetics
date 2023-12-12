@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="fixed bottom-0 w-full bg-customPink p-2">
+    <footer className="bottom-0 w-full bg-customPink p-2">
       <div className="container mx-auto px-1">
         <div className="flex items-center justify-between">
           <div className="icons-container flex items-center">

@@ -8,7 +8,10 @@ import {
   addToCart,
   addToFavorites,
 } from "../lib/api";
-
+type CartContextType = {
+  cartQuantity: number;
+  setCartQuantity: React.Dispatch<React.SetStateAction<number>>;
+};
 export function ProductDetails({ CartContext }) {
   // Retrieve productId from the route
   const { productId } = useParams();
@@ -17,8 +20,8 @@ export function ProductDetails({ CartContext }) {
   const [error, setError] = useState<unknown>();
   const [images, setImages] = useState<ProductImage[]>();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { cartQuantity, setCartQuantity } = useContext(CartContext);
-
+  const { cartQuantity, setCartQuantity } =
+    useContext<CartContextType>(CartContext);
   useEffect(() => {
     async function loadProduct(productId: number) {
       try {

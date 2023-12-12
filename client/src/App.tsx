@@ -86,7 +86,10 @@ export default function App() {
                   path="cart"
                   element={<Cart CartContext={CartContext} />}
                 />
-                <Route path="favorites" element={<Favorites />} />
+                <Route
+                  path="favorites"
+                  element={<Favorites CartContext={CartContext} />}
+                />
                 <Route path="checkout" element={<CheckoutConfirmation />} />
               </Routes>
             </div>

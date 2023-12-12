@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   CartItem,
   Favorite,
@@ -8,16 +8,24 @@ import {
 } from "../lib/api";
 import { Link } from "react-router-dom";
 
-export function Favorites() {
+type CartContextType = {
+  cartQuantity: number;
+  setCartQuantity: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export function Favorites({ CartContext }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
   const [favorites, setFavorites] = useState<Favorite[]>([]);
+  const { cartQuantity, setCartQuantity } =
+    useContext<CartContextType>(CartContext);
 
   useEffect(() => {
     async function loadCatalog() {
       try {
         const favorites = await fetchFavorites();
         setFavorites(favorites);
+        setCartQuantity(cartQuantity);
       } catch (err) {
         setError(err);
       } finally {
@@ -26,7 +34,7 @@ export function Favorites() {
     }
     setIsLoading(true);
     loadCatalog();
-  }, []);
+  }, [cartQuantity, setCartQuantity]);
 
   async function handleRemoveFromFavorites({ favoritesId }) {
     if (!favoritesId) return;
@@ -35,6 +43,7 @@ export function Favorites() {
       try {
         const favorites = await fetchFavorites();
         setFavorites(favorites);
+        setCartQuantity(cartQuantity);
       } catch (err) {
         setError(err);
       } finally {
@@ -49,8 +58,8 @@ export function Favorites() {
   if (error)
     return (
       <div>
-        Error Loading Cart:{" "}
-        {error instanceof Error ? error.message : "Unknown cart error"}
+        Error Loading Favorites:{" "}
+        {error instanceof Error ? error.message : "Unknown favorites error"}
       </div>
     );
 

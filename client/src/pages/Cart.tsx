@@ -8,13 +8,20 @@ import {
 } from "../lib/api";
 import { Link, useNavigate } from "react-router-dom";
 
+type CartContextType = {
+  cartQuantity: number;
+  setCartQuantity: React.Dispatch<React.SetStateAction<number>>;
+};
+
 export default function Cart({ CartContext }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
-  const { cartQuantity, setCartQuantity } = useContext(CartContext);
+
+  const { cartQuantity, setCartQuantity } =
+    useContext<CartContextType>(CartContext);
 
   useEffect(() => {
     if (cartItems.length > 0) {

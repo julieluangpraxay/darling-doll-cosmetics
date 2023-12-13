@@ -1,15 +1,26 @@
+import { Link } from "react-router-dom";
+
 export function Home() {
   return (
     <div>
-      <div className="align-center m-auto flex w-11/12 justify-center p-8">
+      <div className="relative">
         <video
           autoPlay
           loop
           muted
           src="./images/cyberbabevideo.mp4"
-          className="rounded-3xl"
+          className="w-90 rounded-3xl p-10"
         ></video>
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-center">
+          <span className="mb-3 block text-5xl"></span>
+          <Link to="catalog">
+            <button className="inline-block cursor-pointer whitespace-normal rounded-lg border-2 border-transparent bg-pink-100 px-6 py-2 text-center align-middle text-xs font-bold sm:text-sm md:px-8 lg:px-10 xl:px-12">
+              SHOP ALL
+            </button>
+          </Link>
+        </div>
       </div>
+
       {/* collection images */}
       <div className="m-0 flex w-full items-center justify-center gap-10 pb-8">
         <img

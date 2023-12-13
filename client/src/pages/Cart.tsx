@@ -138,7 +138,7 @@ export default function Cart({ CartContext }) {
 
   return (
     <>
-      <div className="pb-24">
+      <div className="pb-52">
         <h1 className="font-heading pb-12 pb-20 pt-12 text-center text-3xl font-semibold">
           SHOPPING CART
         </h1>

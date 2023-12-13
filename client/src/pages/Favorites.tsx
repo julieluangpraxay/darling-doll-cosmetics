@@ -69,7 +69,7 @@ export function Favorites({ CartContext }) {
       </div>
       {favorites.length === 0 ? (
         <div className="text-center">
-          <p className="text-base">
+          <p className="align-center mb-52 justify-center pb-52 text-base">
             There are currently no favorited items. Click "add to favorites" to
             add to this list!
           </p>

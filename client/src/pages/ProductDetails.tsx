@@ -22,6 +22,26 @@ export function ProductDetails({ CartContext }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { cartQuantity, setCartQuantity } =
     useContext<CartContextType>(CartContext);
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isAddedToFavorites, setIsAddedToFavorites] = useState(false);
+
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
+  const [isIngredientsOpen, setIsIngredientsOpen] = useState(false);
+
+  const toggleDescription = () => {
+    setIsDescriptionOpen(!isDescriptionOpen);
+    if (isIngredientsOpen) {
+      setIsIngredientsOpen(false);
+    }
+  };
+
+  const toggleIngredients = () => {
+    setIsIngredientsOpen(!isIngredientsOpen);
+    if (isDescriptionOpen) {
+      setIsDescriptionOpen(false);
+    }
+  };
+
   useEffect(() => {
     async function loadProduct(productId: number) {
       try {
@@ -75,6 +95,7 @@ export function ProductDetails({ CartContext }) {
     try {
       await addToCart(+productId);
       setCartQuantity(cartQuantity + 1);
+      setIsAddedToCart(true);
     } catch (err) {
       setError(err);
     }
@@ -84,6 +105,7 @@ export function ProductDetails({ CartContext }) {
     if (!productId) return;
     try {
       await addToFavorites(+productId);
+      setIsAddedToFavorites(true);
     } catch (err) {
       setError(err);
     }
@@ -124,7 +146,7 @@ export function ProductDetails({ CartContext }) {
                   onClick={handleAddToCart}
                   className="text-base font-black text-black transition duration-200 ease-in-out hover:text-indigo-500"
                 >
-                  ADD TO CART
+                  {isAddedToCart ? "ADDED TO CART" : "ADD TO CART"}
                 </button>
               </div>
             </div>
@@ -148,12 +170,15 @@ export function ProductDetails({ CartContext }) {
               ></path>
             </svg>
             <button className="ml-2 text-sm font-black">
-              ADD TO FAVORITES
+              {isAddedToFavorites ? "ADDED TO FAVORITES" : "ADD TO FAVORITES"}
             </button>
           </a>
           {/* accordian 1 */}
           <div className="ml-2 text-sm font-black">
-            <button className="group flex w-full flex-wrap items-center justify-between border-b-2 border-black px-6 py-5 text-left">
+            <button
+              onClick={toggleDescription}
+              className="group flex w-full flex-wrap items-center justify-between border-b-2 border-black px-6 py-5 text-left"
+            >
               <span className="text-sm font-black">DESCRIPTION</span>
               <svg
                 width="10"
@@ -168,14 +193,14 @@ export function ProductDetails({ CartContext }) {
                   fill="black"
                 ></path>
               </svg>
-              <div className="mt-4 hidden group-hover:block">
+              <div className={isDescriptionOpen ? "mt-4 block" : "mt-4 hidden"}>
                 <p className="text-xs font-bold">{description}</p>
               </div>
             </button>
-          </div>
-          {/* accordian 2 */}
-          <div className="ml-2 text-sm font-black">
-            <button className="group flex w-full flex-wrap items-center justify-between border-b-2 border-black px-6 py-5 text-left">
+            <button
+              onClick={toggleIngredients}
+              className="group flex w-full flex-wrap items-center justify-between border-b-2 border-black px-6 py-5 text-left"
+            >
               <span className="text-sm font-black">INGREDIENTS</span>
               <svg
                 width="10"
@@ -185,12 +210,13 @@ export function ProductDetails({ CartContext }) {
                 xmlns="http://www.w3.org/2000/svg"
                 data-config-id="auto-svg-5-2"
               >
+                {" "}
                 <path
                   d="M8.94674 0.453369H4.79341H1.05341C0.41341 0.453369 0.0934098 1.2267 0.546743 1.68004L4.00008 5.13337C4.55341 5.6867 5.45341 5.6867 6.00674 5.13337L7.32008 3.82004L9.46008 1.68004C9.90674 1.2267 9.58674 0.453369 8.94674 0.453369Z"
                   fill="black"
                 ></path>
               </svg>
-              <div className="mt-4 hidden group-hover:block">
+              <div className={isIngredientsOpen ? "mt-4 block" : "mt-4 hidden"}>
                 <p className="text-xs font-bold">{ingredients}</p>
               </div>
             </button>

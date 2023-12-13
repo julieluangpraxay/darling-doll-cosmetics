@@ -43,7 +43,7 @@ export function Favorites({ CartContext }) {
       try {
         const favorites = await fetchFavorites();
         setFavorites(favorites);
-        setCartQuantity(cartQuantity);
+        setCartQuantity(cartQuantity - 1);
       } catch (err) {
         setError(err);
       } finally {

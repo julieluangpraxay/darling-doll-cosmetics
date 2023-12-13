@@ -40,20 +40,10 @@ export function Home() {
             </h1>
           </div>
           <div className="relative mx-auto max-w-sm font-semibold sm:max-w-7xl">
-            <img
-              className="absolute right-0 top-0 -mt-40"
-              src="saturn-assets/images/instagram-photos/blue-center-light.png"
-              alt=""
-            />
             <div className="px-6">
               <div className="-mx-4 flex">
                 <div className="w-full px-4 md:w-1/3 lg:w-1/4">
-                  <div className="flex items-center justify-between px-4 py-5">
-                    <img
-                      src="saturn-assets/images/instagram-photos/icon-instagram.svg"
-                      alt=""
-                    />
-                  </div>
+                  <div className="flex items-center justify-between px-4 py-5"></div>
                   <div className="pb-2">
                     <img
                       className="block aspect-square h-full w-full rounded"
@@ -63,11 +53,6 @@ export function Home() {
                   </div>
                   <div className="p-1">
                     <div className="flex w-full pb-2">
-                      <img
-                        className="square mr-1.5"
-                        src="saturn-assets/images/instagram-photos/heart-icon.svg"
-                        alt=""
-                      />
                       <svg
                         className="mr-2 w-6 text-red-600"
                         viewBox="0 0 64 64"
@@ -136,12 +121,7 @@ export function Home() {
                 </div>
 
                 <div className="hidden w-full px-4 sm:block md:w-1/3 lg:w-1/4">
-                  <div className="flex items-center justify-between px-4 py-5">
-                    <img
-                      src="saturn-assets/images/instagram-photos/icon-instagram.svg"
-                      alt=""
-                    />
-                  </div>
+                  <div className="flex items-center justify-between px-4 py-5"></div>
                   <div className="pb-2">
                     <img
                       className="block h-full w-full rounded"
@@ -151,11 +131,6 @@ export function Home() {
                   </div>
                   <div className="p-1">
                     <div className="flex w-full pb-2">
-                      <img
-                        className="square mr-1.5"
-                        src="saturn-assets/images/instagram-photos/heart-icon.svg"
-                        alt=""
-                      />
                       <svg
                         className="mr-2 w-6 text-red-600"
                         viewBox="0 0 64 64"
@@ -187,7 +162,6 @@ export function Home() {
                           ></path>
                         </svg>
                       </div>
-
                       <svg
                         aria-label="Share Post"
                         fill="currentColor"
@@ -223,12 +197,7 @@ export function Home() {
                   </div>
                 </div>
                 <div className="hidden px-4 md:block md:w-1/3 lg:w-1/4">
-                  <div className="flex items-center justify-between px-4 py-5">
-                    <img
-                      src="saturn-assets/images/instagram-photos/icon-instagram.svg"
-                      alt=""
-                    />
-                  </div>
+                  <div className="flex items-center justify-between px-4 py-5"></div>
                   <div className="pb-2">
                     <img
                       className="block h-full w-full rounded"
@@ -238,11 +207,6 @@ export function Home() {
                   </div>
                   <div className="p-1">
                     <div className="flex w-full pb-2">
-                      <img
-                        className="square mr-1.5"
-                        src="saturn-assets/images/instagram-photos/heart-icon.svg"
-                        alt=""
-                      />
                       <svg
                         className="mr-2 w-6 text-red-600"
                         viewBox="0 0 64 64"
@@ -274,7 +238,6 @@ export function Home() {
                           ></path>
                         </svg>
                       </div>
-
                       <svg
                         aria-label="Share Post"
                         fill="currentColor"
@@ -310,12 +273,7 @@ export function Home() {
                   </div>
                 </div>
                 <div className="hidden px-4 lg:block lg:w-1/4">
-                  <div className="flex items-center justify-between px-4 py-5">
-                    <img
-                      src="saturn-assets/images/instagram-photos/icon-instagram.svg"
-                      alt=""
-                    />
-                  </div>
+                  <div className="flex items-center justify-between px-4 py-5"></div>
                   <div className="pb-2">
                     <img
                       className="block h-full w-full rounded"
@@ -325,11 +283,6 @@ export function Home() {
                   </div>
                   <div className="p-1">
                     <div className="flex w-full pb-2">
-                      <img
-                        className="square mr-1.5"
-                        src="saturn-assets/images/instagram-photos/heart-icon.svg"
-                        alt=""
-                      />
                       <svg
                         className="mr-2 w-6 text-red-600"
                         viewBox="0 0 64 64"

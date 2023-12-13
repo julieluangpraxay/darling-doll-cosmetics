@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 export function Home() {
   return (
     <div>
-      <div className="relative">
+      <div className="relative rounded-3xl">
         <video
           autoPlay
           loop
           muted
           src="./images/cyberbabevideo.mp4"
-          className="w-90 rounded-3xl p-10"
+          className="w-90 p-10"
         ></video>
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-center">
           <span className="mb-3 block text-5xl"></span>

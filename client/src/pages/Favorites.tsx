@@ -138,12 +138,14 @@ export function CartCard({ favorites, onDelete }: CartProps) {
       </Link>
 
       <div className="flex justify-between">
-        <button
-          onClick={handleAddToCart}
-          className="border-1 -translate-x-1 -translate-y-1 transform items-center justify-center rounded-md border-black bg-pink-300 p-2 text-base font-black text-black transition duration-200 duration-300 hover:text-indigo-500 group-hover:translate-x-0 group-hover:translate-y-0"
-        >
-          ADD TO CART
-        </button>
+        <Link to="/cart">
+          <button
+            onClick={handleAddToCart}
+            className="border-1 -translate-x-1 -translate-y-1 transform items-center justify-center rounded-md border-black bg-pink-300 p-2 text-base font-black text-black transition duration-200 duration-300 hover:text-indigo-500 group-hover:translate-x-0 group-hover:translate-y-0"
+          >
+            ADD TO CART
+          </button>
+        </Link>
         <button
           className="border-1 -translate-x-1 -translate-y-1 transform items-center justify-center rounded-md border-black bg-pink-300 p-2 text-base font-black text-black transition duration-200 duration-300 hover:text-indigo-500 group-hover:translate-x-0 group-hover:translate-y-0"
           onClick={() => onDelete({ favoritesId })}

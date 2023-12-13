@@ -48,7 +48,6 @@ export default function Cart({ CartContext }) {
   }, []);
 
   useEffect(() => {
-    // Your initial fetch logic for cart items and setting quantity
     async function fetchCartAndSetQuantity() {
       try {
         const cartItems = await fetchCart(); // Fetch cart items
@@ -59,7 +58,7 @@ export default function Cart({ CartContext }) {
         setCartItems(cartItems);
         setCartQuantity(totalQuantity);
       } catch (error) {
-        // Handle error fetching cart
+        console.error(error);
       }
     }
     fetchCartAndSetQuantity();
@@ -95,7 +94,7 @@ export default function Cart({ CartContext }) {
       });
 
       setCartItems(newProducts);
-      setCartQuantity(cartQuantity + 1); // Update the cart quantity directly
+      setCartQuantity(cartQuantity + 1);
     } catch (error) {
       console.error(error);
     }
@@ -117,14 +116,14 @@ export default function Cart({ CartContext }) {
         });
 
         setCartItems(updatedCartItems);
-        setCartQuantity(cartQuantity - 1); // Update the cart quantity directly
+        setCartQuantity(cartQuantity - 1);
       } else {
         await deleteItem(item.cartId);
         const updatedCartItems = cartItems.filter(
           (product) => product.cartId !== item.cartId,
         );
         setCartItems(updatedCartItems);
-        setCartQuantity(cartQuantity - item.quantity); // Update the cart quantity directly
+        setCartQuantity(cartQuantity - item.quantity);
       }
     } catch (error) {
       console.error(error);

@@ -171,7 +171,7 @@ export function ProductDetails({ CartContext }) {
                 </Link>
               </div>
               <div className="mx-4 flex flex-wrap">
-                <div className="mb-14 w-full px-4 lg:mb-0 lg:w-3/5">
+                <div className="mb-14 w-full px-4 lg:mb-12 lg:w-3/5">
                   <div className="container m-auto w-full">
                     <div className="flex w-full">
                       {/* MAIN PICTURE */}
@@ -193,7 +193,7 @@ export function ProductDetails({ CartContext }) {
                     </div>
                   </div>
                 </div>
-                <div className="m-0 w-full px-4 sm:mb-12 lg:w-2/5">
+                <div className="m-0 mb-12 w-full px-4 md:mb-12 lg:w-2/5">
                   <div className="mx-auto max-w-lg">
                     <span className="mb-4 inline-flex h-8 items-center justify-center rounded-md border-2 border-black bg-indigo-500 px-1 text-sm font-black uppercase text-white shadow-sm">
                       NEW

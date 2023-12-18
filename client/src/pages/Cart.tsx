@@ -64,13 +64,6 @@ export default function Cart({ CartContext }) {
     fetchCartAndSetQuantity();
   }, [setCartQuantity]);
 
-  useEffect(() => {
-    // Logic to update cart quantity based on cart items change
-    setCartQuantity(
-      cartItems.reduce((total, product) => total + product.quantity, 0),
-    );
-  }, [cartItems, setCartQuantity]);
-
   if (isLoading || !cartItems) return;
   if (error)
     return (
